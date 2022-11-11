@@ -1,45 +1,26 @@
-import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../Button";
 import NavItems from "./NavItems";
+import Input from "../Input";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const [close, setClose] = useState(true);
-
-  const closeFunction = async () => {
-    setClose(false);
-  };
-
-  const openFunction = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setOpen(true);
-  };
-
   return (
-    <>
-      <div className="m-8 flex items-center justify-start gap-5 rounded-md bg-gradient-to-l from-purple-500 p-3 text-white">
-        <Button
-          onClick={() => closeFunction()}
-          className="active:-translate-y-1 active:scale-110 "
-        >
-          navbar
-        </Button>
-
-        {/* Navigation buttons */}
-        <NavItems />
-
-        <Button className="pr-2">Close</Button>
+    <div className="mt-7 flex w-full items-center">
+      <div className="flex items-center pr-12 text-xl font-bold uppercase text-rawg-white">
+        rawg
       </div>
 
-      <div>
-        <Button
-          onClick={() => openFunction()}
-          className="active:-translate-y-1 active:scale-110 "
-        >
-          navbar
-        </Button>
+      <div className="rounded-md bg-rawg-white px-4 py-0.5 font-light text-rawg-black">
+        RateGamesRate
       </div>
-    </>
+
+      <div className="mx-6 flex w-full items-center gap-2 rounded-full bg-rawg-gray px-4 py-3 transition duration-150 ease-in-out hover:bg-rawg-white hover:text-rawg-black">
+        <MagnifyingGlassIcon className="h-5 w-5" />
+        <Input type="text" className="w-full bg-rawg-gray outline-none" />
+      </div>
+      <NavItems />
+    </div>
   );
 };
 

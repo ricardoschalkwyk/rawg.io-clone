@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-900 text-gray-700;
-  font-family: "Open Sans", sans-serif;
+  @apply bg-rawg-black text-rawg-white;
+  font-family: "Fira Sans Condensed", sans-serif;
 }

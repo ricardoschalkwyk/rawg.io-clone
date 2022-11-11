@@ -3,7 +3,7 @@ import Navbar from "./NavbarComp/Navbar";
 
 function Layout() {
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-9">
       <div>
         <Navbar />
       </div>

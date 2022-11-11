@@ -1,25 +1,33 @@
-import React, { AllHTMLAttributes } from "react";
+import React from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
 interface Props {
-  className: string;
-  children: string;
-  onClick: React.MouseEvent<HTMLElement>;
-  bg: string;
+  className?: string;
+  type?: "button" | "submit" | "reset" | undefined;
+  children?: React.ReactNode;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  bg?: string;
 }
 
-const Button: React.FC<Props> = ({
+const Button = ({
   className = "",
   children = "",
   bg = "",
-}) => {
+  type = "button",
+  onClick,
+}: Props) => {
   return (
     <button
+      type={type}
       className={clsx(
-        "rounded-md transition delay-75 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110",
-        className
+        "rounded-md transition duration-150 ease-in-out hover:-translate-y-1 hover:scale-110",
+        className,
+        bg
       )}
+      onClick={(e) => {
+        onClick?.(e);
+      }}
     >
       {children}
     </button>

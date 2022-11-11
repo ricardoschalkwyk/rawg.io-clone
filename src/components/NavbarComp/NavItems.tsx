@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Button from "../Button";
+import { NavLink } from "react-router-dom";
 
 const NavItems = () => {
   return (
-    <div className="flex w-full justify-center gap-10">
-      <Button>Home</Button>
-      <Button>About</Button>
-      <Button>Contact</Button>
-      <Button>Search</Button>
+    <div className="text-lg font-light">
+      <div className="flex w-full justify-center gap-5 uppercase">
+        <NavLink to={"/"}>Log</NavLink>
+        <NavLink to={"/home"}>Sign</NavLink>
+        <NavLink to={"/about"}>Api</NavLink>
+        <NavLink to={"/contact"}>...</NavLink>
+      </div>
     </div>
   );
 };
