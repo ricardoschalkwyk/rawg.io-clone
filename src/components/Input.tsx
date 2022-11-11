@@ -4,14 +4,20 @@ import PropTypes from "prop-types";
 
 interface Props {
   className?: string;
+  placeholder?: string;
   type?: HTMLInputTypeAttribute;
   onClick?: () => void;
 }
 
-const Input = ({ className = "", type = "text" }: Props): JSX.Element => {
+const Input = ({
+  className = "",
+  type = "text",
+  placeholder = "",
+}: Props): JSX.Element => {
   return (
     <input
       type={type}
+      placeholder={placeholder}
       className={clsx("rounded-md active:no-underline", className)}
     />
   );

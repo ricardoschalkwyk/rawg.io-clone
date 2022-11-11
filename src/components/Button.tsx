@@ -20,11 +20,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={clsx(
-        "rounded-md transition duration-150 ease-in-out hover:-translate-y-1 hover:scale-110",
-        className,
-        bg
-      )}
+      className={clsx("rounded-md", className, bg)}
       onClick={(e) => {
         onClick?.(e);
       }}
