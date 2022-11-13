@@ -4,7 +4,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        rawg: { black: "#151515", white: "#FFFFFF", gray: "#FFFFFF29" },
+        rawg: {
+          black: "#151515",
+          white: "#FFFFFF",
+          gray: "#FFFFFF29",
+          dark: "#FFFFFF12",
+        },
       },
     },
   },

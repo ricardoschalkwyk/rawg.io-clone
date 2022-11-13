@@ -4,14 +4,14 @@ import SideBar from "./SideBarComp/SideBar";
 
 function Layout() {
   return (
-    <div className="container mx-9">
+    <div className="container mx-auto">
       <div>
         <Navbar />
       </div>
-      <div>
+      <div className="flex">
         <SideBar />
+        <Outlet />
       </div>
-      <Outlet />
     </div>
   );
 }
