@@ -12,7 +12,7 @@ const Navbar = () => {
       </div>
 
       <div className="rounded-md bg-rawg-white px-4 py-0.5 font-light text-rawg-black">
-        RateGamesRate
+        RateTopGames
       </div>
 
       <div className="mx-6 flex w-full items-center gap-2 rounded-full bg-rawg-gray pl-3 transition duration-150 ease-in-out hover:bg-rawg-white hover:text-rawg-black">
@@ -20,7 +20,7 @@ const Navbar = () => {
         <Input
           type="text"
           placeholder="Search from our selection of games"
-          className="w-full rounded-full bg-rawg-gray px-4 py-3 text-black outline-none"
+          className="w-full rounded-full bg-rawg-gray px-4 py-2.5 text-black outline-none"
         />
       </div>
       <NavItems />
