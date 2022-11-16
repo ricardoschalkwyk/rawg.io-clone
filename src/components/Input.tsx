@@ -1,6 +1,5 @@
-import React, { AllHTMLAttributes, HTMLInputTypeAttribute } from "react";
+import { HTMLInputTypeAttribute } from "react";
 import clsx from "clsx";
-import PropTypes from "prop-types";
 
 interface Props {
   className?: string;

@@ -40,16 +40,19 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-4 gap-14">
+      <div className="mt-8 grid grid-cols-4 gap-6">
         <Button className="">
           <GameCard />
         </Button>
+
         <Button className="">
           <GameCard />
         </Button>
+
         <Button className="">
           <GameCard />
         </Button>
+
         <Button className="">
           <GameCard />
         </Button>
