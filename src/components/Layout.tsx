@@ -4,7 +4,7 @@ import SideBar from "./SideBarComp/SideBar";
 
 function Layout() {
   return (
-    <div className="container mx-auto">
+    <div className="px-10">
       <div>
         <Navbar />
       </div>

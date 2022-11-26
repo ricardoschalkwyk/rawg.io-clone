@@ -4,11 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        rawg: {
+        brand: {
           black: "#151515",
+          gray: "#3b3b3b",
+          dark: "#202020",
           white: "#FFFFFF",
-          gray: "#FFFFFF29",
-          dark: "#FFFFFF12",
+          "scorpion-gray": "#5f5f5f",
+          "meta-green": "#6dc849",
         },
       },
     },

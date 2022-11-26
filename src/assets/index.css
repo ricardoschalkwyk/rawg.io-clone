@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply bg-rawg-black text-rawg-white;
+  @apply bg-brand-black text-brand-white;
   font-family: "Roboto", sans-serif;
 }

@@ -3,7 +3,6 @@ import Top from "./Top";
 import Browse from "./Browse";
 import Platforms from "./Platforms";
 import Genre from "./Genre";
-
 const SideBar = () => {
   return (
     <div className="mt-24 w-64 flex-col justify-start">
