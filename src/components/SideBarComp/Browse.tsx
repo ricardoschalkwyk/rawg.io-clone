@@ -8,7 +8,7 @@ import {
 
 const Browse = () => {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-2">
       <Button className="flex items-center gap-2 border-solid text-lg font-thin">
         <TvIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5" />
         <div>Platforms</div>

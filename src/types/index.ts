@@ -1,7 +1,7 @@
 export interface GetResult {
   count: number;
   next: string;
-  previous: string;
+  previous?: string;
   results: Game[];
   seo_title: string;
   seo_description: string;
@@ -48,11 +48,11 @@ export interface Game {
   reviews_text_count: number;
   added: number;
   added_by_status?: AddedByStatus;
-  metacritic: number | null;
+  metacritic?: number | null;
   playtime: number;
   suggestions_count: number;
   updated: Date;
-  user_game: null;
+  user_game?: null;
   reviews_count: number;
   saturated_color: Color;
   dominant_color: Color;
@@ -60,9 +60,9 @@ export interface Game {
   parent_platforms: ParentPlatform[];
   genres: Genre[];
   stores: Store[];
-  clip: null;
+  clip?: null;
   tags: Genre[];
-  esrb_rating: EsrbRating | null;
+  esrb_rating?: EsrbRating | null;
   short_screenshots: ShortScreenshot[];
 }
 
@@ -148,8 +148,8 @@ export interface ParentPlatform {
 export interface PlatformElement {
   platform: PlatformPlatform;
   released_at: Date;
-  requirements_en: Requirements | null;
-  requirements_ru: Requirements | null;
+  requirements_en?: Requirements | null;
+  requirements_ru?: Requirements | null;
 }
 
 export interface PlatformPlatform {

@@ -1,9 +1,13 @@
+import { faPlaystation } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
+import { Game, GetResult } from "../types";
+
 import Api from "../api";
+
 import Button from "../components/Button";
 import GameCard from "../components/GameComp/GameCard";
-import { Game, GetResult } from "../types";
 
 interface Columns {
   results: Game[];
@@ -62,8 +66,6 @@ const HomePage = () => {
         <div className="mt-6 flex w-full gap-3">
           <select className="appearance-none rounded-md bg-brand-dark py-2 pl-3 pr-10 outline-none">
             <option value="1">Order by: Relevance</option>
-            <option value="1">option1</option>
-            <option value="1">option1</option>
           </select>
 
           <select className="appearance-none rounded-md bg-brand-dark py-2 pl-3 pr-16 outline-none">

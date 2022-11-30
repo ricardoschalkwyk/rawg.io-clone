@@ -4,8 +4,16 @@ import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
-  // Add conditional chaining to all necessary keys inside game interface
-  // fix spacing and sizing on sidebar
+  // {Sidebar}
+  // Fix spacing / sizing on sidebar
+  // Implement all matching icons to sidebar
+
+  // {Game-card}
+  // Make hovering more smooth
+
+  // {Basic functionality}
+  // Add more data and test filter implementation
+
   return (
     <div>
       <Routes>

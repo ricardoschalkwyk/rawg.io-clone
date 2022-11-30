@@ -7,9 +7,15 @@ import {
   faWindows,
   faXbox,
 } from "@fortawesome/free-brands-svg-icons";
-import { faPlus, faWind } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight,
+  faEllipsis,
+  faGift,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button";
-import { PlusIcon } from "@heroicons/react/24/solid";
+import clsx from "clsx";
+import GameCardImage from "./GameCardImage";
 interface GameDefaults {
   title?: string;
   game?: Game;
@@ -52,14 +58,10 @@ const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
         className="z-0 w-full rounded-b-md bg-brand-dark transition-transform group-hover:z-10 group-hover:scale-105"
       >
         <div>
-          <div className="flex justify-center rounded-t-md bg-brand-white text-brand-black">
-            <img
-              src={game.background_image}
-              alt={game.name}
-              className="rounded-t-md object-cover"
-            />
-          </div>
+          {/* Game image */}
+          <GameCardImage game={game} hover={hover} />
 
+          {/* Icon display */}
           <div className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex gap-1.5 text-sm">
@@ -78,21 +80,44 @@ const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
                   }
                 })}
               </div>
+
+              {/* Critic score */}
               <div className="inline-flex rounded-md border border-solid border-brand-meta-green/40 py-1 px-1.5 text-sm font-bold leading-none text-brand-meta-green">
                 {game.metacritic}
               </div>
             </div>
+
+            {/* Game title */}
             <div className="mb-2 flex justify-start pt-2 text-2xl font-bold uppercase">
               {game.name}
             </div>
 
-            <Button className="flex items-center gap-1 rounded bg-brand-gray py-1 px-2 text-xs">
-              <FontAwesomeIcon icon={faPlus} className="text-xs" />
-              {game?.added_by_status?.owned}
-            </Button>
+            {/* Owned status */}
+            <div className="flex gap-1">
+              <Button className="flex items-center gap-1 rounded bg-brand-gray py-1 px-2 text-xs">
+                <FontAwesomeIcon icon={faPlus} className="text-xs" />
+                {game?.added_by_status?.owned}
+              </Button>
+
+              {hover && (
+                <div className="flex gap-1">
+                  <Button className="flex items-center gap-1 rounded bg-brand-gray py-1 px-2 text-xs">
+                    <FontAwesomeIcon icon={faGift} className="text-xs" />
+                  </Button>
+                  <Button className="flex items-center gap-1 rounded bg-brand-gray py-1 px-2 text-xs">
+                    <FontAwesomeIcon icon={faEllipsis} className="text-base" />
+                  </Button>
+                </div>
+              )}
+            </div>
 
             {hover && (
-              <div>
+              <div
+                className={clsx(
+                  hover &&
+                    "mt-4 space-y-3 divide-y-0 divide-brand-scorpion-gray text-xs transition-opacity ease-in-out"
+                )}
+              >
                 <div className="mt-4 space-y-3 divide-y divide-brand-scorpion-gray text-xs">
                   <div className="flex justify-between">
                     <div className="text-brand-scorpion-gray">
@@ -100,6 +125,7 @@ const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
                     </div>
                     <div>{game.released}</div>
                   </div>
+
                   <div className="flex justify-between pt-2.5">
                     <div className="text-brand-scorpion-gray">Genre:</div>
                     <div>
@@ -111,6 +137,7 @@ const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
                       ))}
                     </div>
                   </div>
+
                   <div className="flex justify-between pt-2.5">
                     <div className="text-brand-scorpion-gray">Chart:</div>
                     <div>
@@ -118,6 +145,17 @@ const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
                       {format(new Date(game.released), "yyyy")}
                     </div>
                   </div>
+                </div>
+
+                <div className="mt-4 flex justify-center">
+                  <Button className="flex w-full items-center justify-between bg-brand-gray px-3 py-2.5 text-sm font-light">
+                    <span>Show more like this</span>
+
+                    <FontAwesomeIcon
+                      className="h-5 w-5 text-brand-scorpion-gray"
+                      icon={faChevronRight}
+                    />
+                  </Button>
                 </div>
               </div>
             )}
