@@ -1,6 +1,6 @@
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import { useEffect } from "react";
-import { GetResult } from "../types";
+import { useEffect, useState } from "react";
+import { Game, GetResult } from "../types";
 
 import Api from "../api";
 
@@ -8,20 +8,48 @@ import Button from "../components/Button";
 import GameCard from "../components/GameComp/GameCard";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { setGames } from "../store/games";
-import { useDispatch } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faNetworkWired } from "@fortawesome/free-solid-svg-icons";
 
-const HomePage = () => {
-  const { columns } = useSelector((state: RootState) => state.games);
+interface Columns {
+  results: Game[];
+}
 
-  const dispatch = useDispatch();
+const SearchResults = () => {
+  const results = useSelector((state: RootState) => state.games.data);
+
+  const [columns, setColumns] = useState<Columns[]>([
+    {
+      results: [],
+    },
+    {
+      results: [],
+    },
+    {
+      results: [],
+    },
+    {
+      results: [],
+    },
+  ]);
 
   const getGames = async () => {
     const { results } = await Api.get<GetResult>("");
 
-    dispatch(setGames(results));
+    console.log("🚀 ~ getGames ~ results", results);
+
+    setColumns(
+      columns.map((column, index) => {
+        const numberThing = Math.ceil(results.length / 4);
+
+        console.log("🚀 ~ columns.map ~ numberThing", numberThing);
+
+        return {
+          results: results.slice(
+            index * numberThing,
+            index * numberThing + numberThing
+          ),
+        };
+      })
+    );
   };
 
   useEffect(() => {
@@ -57,7 +85,7 @@ const HomePage = () => {
               {<Bars3Icon className="h-4 w-4" />}
             </Button>
             <Button className="bg-brand-dark py-3 px-4 hover:bg-brand-gray">
-              <FontAwesomeIcon icon={faNetworkWired} />
+              B
             </Button>
           </div>
         </div>
@@ -76,6 +104,6 @@ const HomePage = () => {
   );
 };
 
-HomePage.propTypes = {};
+SearchResults.propTypes = {};
 
-export default HomePage;
+export default SearchResults;

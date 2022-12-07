@@ -8,18 +8,18 @@ import {
 const Top = () => {
   return (
     <div className="space-y-2">
-      <Button className="flex items-center gap-2 border-solid text-lg font-thin">
-        <TrophyIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5" />
+      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
+        <TrophyIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
         <div>Best of the year</div>
       </Button>
 
-      <Button className="flex items-center gap-2 border-solid text-lg font-thin">
-        <ChartBarIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5" />
+      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
+        <ChartBarIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
         <div>Popular in 2022</div>
       </Button>
 
-      <Button className="flex items-center gap-2 border-solid text-lg font-thin">
-        <BarsArrowUpIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5" />
+      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
+        <BarsArrowUpIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
         <div>All time best</div>
       </Button>
     </div>

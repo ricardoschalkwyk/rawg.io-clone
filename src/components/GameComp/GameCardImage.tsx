@@ -1,5 +1,5 @@
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Game } from "../../types";
 import Button from "../Button";
@@ -10,13 +10,21 @@ interface ImageDefaults {
 }
 
 const GameCardImage = ({ hover, game }: ImageDefaults) => {
+  const getCropUrl = (url = "") => {
+    const parts = url.split("/media/");
+
+    return `${parts[0]}/media/crop/600/400/${parts[1]}`;
+  };
+
   return (
-    <div className="relative flex max-h-36 justify-center rounded-t-md bg-brand-white text-brand-black">
-      <img
-        src={game?.background_image}
-        alt={game?.name}
-        className="min-h-[144px] rounded-t-md object-cover"
-      />
+    <div className="relative flex max-h-36 justify-center rounded-t-md bg-brand-dark text-brand-black">
+      <div
+        className="min-h-[144px] w-full rounded-t-md bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${getCropUrl(game?.background_image)})`,
+        }}
+      ></div>
+
       {hover && (
         <Button className="absolute right-0 bottom-0 m-2 flex items-center gap-2 bg-brand-dark bg-opacity-50 p-1 text-xs font-normal text-brand-white">
           <FontAwesomeIcon
@@ -28,10 +36,12 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
       )}
 
       {!hover && (
-        <FontAwesomeIcon
-          className="absolute left-0 bottom-0 m-4 h-10 w-10 rounded-full bg-brand-white bg-opacity-60 text-brand-dark text-opacity-50"
-          icon={faCirclePlay}
-        />
+        <div className="absolute left-4 bottom-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-brand-white">
+          <FontAwesomeIcon
+            className="relative -right-[1px] h-5 w-5 "
+            icon={faPlay}
+          />
+        </div>
       )}
     </div>
   );

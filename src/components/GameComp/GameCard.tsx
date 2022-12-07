@@ -55,11 +55,11 @@ const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
           setHover(false);
         }}
         style={{ position: hover ? "absolute" : "static" }}
-        className="z-0 w-full rounded-b-md bg-brand-dark transition-transform group-hover:z-10 group-hover:scale-105"
+        className="z-0 w-full rounded-md bg-brand-dark transition-transform duration-200 ease-in-out group-hover:z-10 group-hover:scale-105"
       >
         <div>
           {/* Game image */}
-          <GameCardImage game={game} hover={hover} />
+          {game.background_image && <GameCardImage game={game} hover={hover} />}
 
           {/* Icon display */}
           <div className="p-4">
@@ -68,12 +68,27 @@ const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
                 {game.parent_platforms.map((platform, index) => {
                   switch (platform.platform.name) {
                     case "PC":
-                      return <FontAwesomeIcon icon={faWindows} />;
+                      return (
+                        <FontAwesomeIcon
+                          key={platform.platform.id}
+                          icon={faWindows}
+                        />
+                      );
                     case "PlayStation":
-                      return <FontAwesomeIcon icon={faPlaystation} />;
+                      return (
+                        <FontAwesomeIcon
+                          key={platform.platform.id}
+                          icon={faPlaystation}
+                        />
+                      );
 
                     case "Xbox":
-                      return <FontAwesomeIcon icon={faXbox} />;
+                      return (
+                        <FontAwesomeIcon
+                          key={platform.platform.id}
+                          icon={faXbox}
+                        />
+                      );
 
                     default:
                       return null;

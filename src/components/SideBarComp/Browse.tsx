@@ -9,18 +9,18 @@ import {
 const Browse = () => {
   return (
     <div className="space-y-2">
-      <Button className="flex items-center gap-2 border-solid text-lg font-thin">
-        <TvIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5" />
+      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
+        <TvIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
         <div>Platforms</div>
       </Button>
 
-      <Button className="flex items-center gap-2 border-solid text-lg font-thin">
-        <ArrowDownTrayIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5" />
+      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
+        <ArrowDownTrayIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
         <div>Store</div>
       </Button>
 
-      <Button className="flex items-center gap-2 border-solid text-lg font-thin">
-        <InboxStackIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5" />
+      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
+        <InboxStackIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
         <div>Collection</div>
       </Button>
 
