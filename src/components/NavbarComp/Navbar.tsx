@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { GetResult } from "../../types";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 import Api from "../../api";
+
+import { GetResult } from "../../types";
+
+import { setGames } from "../../store/games";
+import { RootState } from "../../store";
+
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 import NavItems from "./NavItems";
 import Input from "../Input";
-import { useDispatch } from "react-redux";
-import { setGames } from "../../store/games";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 
 const Navbar = () => {
   const games = useSelector((state: RootState) => state.games);

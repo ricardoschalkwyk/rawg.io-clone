@@ -1,17 +1,21 @@
-import { Bars3Icon } from "@heroicons/react/24/solid";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
-import { GetResult } from "../types";
+import {
+  faChevronDown,
+  faGift,
+  faNetworkWired,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Api from "../api";
 
 import Button from "../components/Button";
 import GameCard from "../components/GameComp/GameCard";
-import { useSelector } from "react-redux";
+import { Bars3Icon } from "@heroicons/react/24/solid";
+import { GetResult } from "../types";
 import { RootState } from "../store";
 import { setGames } from "../store/games";
-import { useDispatch } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faNetworkWired } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = () => {
   const { columns } = useSelector((state: RootState) => state.games);
@@ -38,15 +42,19 @@ const HomePage = () => {
       <div className="flex items-center justify-between">
         {/* Selector boxes */}
         <div className="mt-6 flex w-full gap-3">
-          <select className="appearance-none rounded-md bg-brand-dark py-2 pl-3 pr-10 outline-none">
-            <option value="1">Order by: Relevance</option>
-          </select>
+          <Button className="flex items-center space-x-3 rounded-md bg-brand-dark py-2 px-3 pl-3 text-sm duration-500 ease-in-out hover:text-brand-light-gray">
+            <span>Order by: Relevance</span>
+            <span className="text-brand-light-gray">
+              <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+            </span>
+          </Button>
 
-          <select className="appearance-none rounded-md bg-brand-dark py-2 pl-3 pr-16 outline-none">
-            <option value="1">Platform</option>
-            <option value="1">option1</option>
-            <option value="1">option1</option>
-          </select>
+          <Button className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 pl-3 duration-500 ease-in-out hover:text-brand-light-gray">
+            <span>Platform</span>
+            <span className="flex justify-end text-brand-light-gray">
+              <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+            </span>
+          </Button>
         </div>
 
         {/* Select display */}

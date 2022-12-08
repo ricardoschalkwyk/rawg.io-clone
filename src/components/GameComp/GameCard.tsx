@@ -1,6 +1,5 @@
 import { format } from "date-fns";
 import { useEffect, useRef, useState } from "react";
-import { Game } from "../../types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlaystation,
@@ -13,8 +12,10 @@ import {
   faGift,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import Button from "../Button";
 import clsx from "clsx";
+
+import { Game } from "../../types";
+import Button from "../Button";
 import GameCardImage from "./GameCardImage";
 interface GameDefaults {
   title?: string;
