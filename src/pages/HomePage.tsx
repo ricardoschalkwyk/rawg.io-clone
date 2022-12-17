@@ -1,21 +1,19 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 import { useEffect } from "react";
-import {
-  faChevronDown,
-  faGift,
-  faNetworkWired,
-} from "@fortawesome/free-solid-svg-icons";
+import { faNetworkWired } from "@fortawesome/free-solid-svg-icons";
 
 import Api from "../api";
 
-import Button from "../components/Button";
-import GameCard from "../components/GameComp/GameCard";
-import { Bars3Icon } from "@heroicons/react/24/solid";
 import { GetResult } from "../types";
 import { RootState } from "../store";
 import { setGames } from "../store/games";
+
+import Button from "../components/Button";
+import GameCard from "../components/GameComp/GameCard";
+import FilterDiv from "../components/Filters/FilterDiv";
 
 const HomePage = () => {
   const { columns } = useSelector((state: RootState) => state.games);
@@ -40,21 +38,9 @@ const HomePage = () => {
       </div>
 
       <div className="flex items-center justify-between">
-        {/* Selector boxes */}
+        {/* Order selector boxes */}
         <div className="mt-6 flex w-full gap-3">
-          <Button className="flex items-center space-x-3 rounded-md bg-brand-dark py-2 px-3 pl-3 text-sm duration-500 ease-in-out hover:text-brand-light-gray">
-            <span>Order by: Relevance</span>
-            <span className="text-brand-light-gray">
-              <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
-            </span>
-          </Button>
-
-          <Button className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 pl-3 duration-500 ease-in-out hover:text-brand-light-gray">
-            <span>Platform</span>
-            <span className="flex justify-end text-brand-light-gray">
-              <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
-            </span>
-          </Button>
+          <FilterDiv />
         </div>
 
         {/* Select display */}
@@ -71,6 +57,7 @@ const HomePage = () => {
         </div>
       </div>
 
+      {/* GameCards */}
       <div className="mt-8 grid grid-cols-4 items-start gap-6">
         {columns.map((column, index) => (
           <div key={index} className="flex flex-col gap-6">

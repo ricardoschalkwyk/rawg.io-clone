@@ -34,6 +34,11 @@ export interface YearYear {
   nofollow: boolean;
 }
 
+export interface OrderByFilter {
+  id: number;
+  OrderName: string;
+}
+
 export interface Game {
   id: number;
   slug: string;

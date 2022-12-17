@@ -1,4 +1,4 @@
-import GameSelected from "../components/GameComp/GameSelected";
+import GameSelected from "../components/GameComp/SelectedGame/GameSelected";
 
 const DisplayPage = () => {
   return (

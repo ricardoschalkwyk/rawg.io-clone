@@ -4,6 +4,8 @@ import {
   ChartBarIcon,
   TrophyIcon,
 } from "@heroicons/react/24/solid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCrown } from "@fortawesome/free-solid-svg-icons";
 
 const Top = () => {
   return (
@@ -19,7 +21,10 @@ const Top = () => {
       </Button>
 
       <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
-        <BarsArrowUpIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
+        <FontAwesomeIcon
+          icon={faCrown}
+          className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray"
+        />
         <div>All time best</div>
       </Button>
     </div>

@@ -26,7 +26,7 @@ interface GameDefaults {
   index?: number;
 }
 
-const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
+const GameCard = ({ game }: GameDefaults) => {
   const div = useRef<HTMLDivElement>(null);
 
   const [height, setHeight] = useState(0);
@@ -98,9 +98,11 @@ const GameCard = ({ index = 0, title = "", game }: GameDefaults) => {
               </div>
 
               {/* Critic score */}
-              <div className="inline-flex rounded-md border border-solid border-brand-meta-green/40 py-1 px-1.5 text-sm font-bold leading-none text-brand-meta-green">
-                {game.metacritic}
-              </div>
+              {game.metacritic && (
+                <div className="inline-flex rounded-md border border-solid border-brand-meta-green/40 py-1 px-1.5 text-sm font-bold leading-none text-brand-meta-green">
+                  {game.metacritic}
+                </div>
+              )}
             </div>
 
             {/* Game title */}
