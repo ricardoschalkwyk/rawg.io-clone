@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const NavItems = () => {
   return (
-    <div className="text-lg font-light">
+    <div className="text-sm font-normal">
       <div className="flex w-full justify-center gap-5 uppercase">
         <NavLink className="hover:underline hover:underline-offset-4" to={"/"}>
           Log_In

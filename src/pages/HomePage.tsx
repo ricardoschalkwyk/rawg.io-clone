@@ -33,7 +33,7 @@ const HomePage = () => {
   return (
     <div className="w-full">
       <div className="mt-16">
-        <div className="text-7xl font-bold">New and Trending</div>
+        <div className="text-7xl font-bold">New and trending</div>
         <div>Based on player count and release date</div>
       </div>
 

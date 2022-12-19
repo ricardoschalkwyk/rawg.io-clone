@@ -1,6 +1,6 @@
 // MY friend helped with the setup of this API
 const API_KEY = import.meta.env.VITE_API_URL;
-const BASE_URL = `https://api.rawg.io/api/games?key=${API_KEY}&page=1&page_size=64`;
+const BASE_URL = `https://api.rawg.io/api/games?key=${API_KEY}&page=1&page_size=300`;
 
 // Error Control.
 const Api = {

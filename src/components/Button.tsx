@@ -7,6 +7,8 @@ interface Props {
   children?: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   bg?: string;
+  onMouseOver?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseOut?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = ({

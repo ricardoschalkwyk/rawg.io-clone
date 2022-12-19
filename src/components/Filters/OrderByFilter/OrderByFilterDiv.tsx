@@ -1,9 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Button from "../../Button";
 import OrderBy from "../OrderBy";
+import Api from "../../../api";
+import { GetResult } from "../../../types";
+import { useDispatch } from "react-redux";
+import { setGames } from "../../../store/games";
 
 export interface OrderOption {
   id: number;
@@ -11,12 +15,12 @@ export interface OrderOption {
   selected: boolean;
   query:
     | "name"
+    | "relevance"
     | "released"
     | "added"
     | "created"
     | "updated"
-    | "rating"
-    | "metacritic";
+    | "rating";
 }
 
 const orderOptions: OrderOption[] = [
@@ -24,14 +28,14 @@ const orderOptions: OrderOption[] = [
     id: 1,
     orderName: "Relevance",
     selected: false,
-    query: "rating",
+    query: "relevance",
   },
 
   {
     id: 2,
     orderName: "Date added",
     selected: false,
-    query: "added",
+    query: "created",
   },
 
   {
@@ -59,7 +63,7 @@ const orderOptions: OrderOption[] = [
     id: 6,
     orderName: "Average rating",
     selected: false,
-    query: "metacritic",
+    query: "rating",
   },
 ];
 
@@ -69,6 +73,8 @@ const OrderByFilterDiv = () => {
 
   const [options, setOptions] = useState(orderOptions);
 
+  const dispatch = useDispatch();
+
   const handleClick = (option: OrderOption) => {
     const index = options.findIndex((item) => item.id === option.id);
 
@@ -77,13 +83,24 @@ const OrderByFilterDiv = () => {
     setOptions(newArray);
   };
 
+  const handleOrder = async (option: OrderOption) => {
+    try {
+      // Get input for the search
+      const { results } = await Api.get<GetResult>(`&ordering=${option}`);
+
+      dispatch(setGames(results));
+      console.log("🚀 ~ getGames ~ results", results);
+    } catch (error) {
+      alert("Item not found");
+    }
+  };
+
   return (
     <>
       <div>
         <Button
           onClick={() => {
             setShowOrderBy(true);
-            console.log(showOrderBy);
           }}
           className="flex items-center space-x-3 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray"
         >
@@ -102,6 +119,7 @@ const OrderByFilterDiv = () => {
               order={options}
               onClick={(option) => {
                 handleClick(option);
+                handleOrder(option.query);
                 setOrderValue(option.orderName);
                 setShowOrderBy(false);
               }}

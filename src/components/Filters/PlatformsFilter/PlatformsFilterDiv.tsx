@@ -4,6 +4,10 @@ import { useState } from "react";
 
 import Button from "../../Button";
 import Platforms from "../Platforms";
+import { GetResult } from "../../../types";
+import Api from "../../../api";
+import { setGames } from "../../../store/games";
+import { useDispatch } from "react-redux";
 
 interface Other {
   id: number;
@@ -139,6 +143,8 @@ const PlatformsFilterDiv = () => {
 
   const [options, setOptions] = useState(platformsOptions);
 
+  const dispatch = useDispatch();
+
   const handleClick = (option: PlatformOption) => {
     const index = options.findIndex((item) => item.id === option.id);
 
@@ -148,6 +154,20 @@ const PlatformsFilterDiv = () => {
     }));
     newArray[index].selected = !newArray[index].selected;
     setOptions(newArray);
+  };
+
+  const handlePlatform = async (option: PlatformOption) => {
+    try {
+      // Get input for the search
+      const { results } = await Api.get<GetResult>(
+        `&ordering=parent_platforms&${option}`
+      );
+
+      dispatch(setGames(results));
+      console.log("🚀 ~ getGames ~ results", results);
+    } catch (error) {
+      alert("Item not found");
+    }
   };
 
   return (
@@ -168,10 +188,11 @@ const PlatformsFilterDiv = () => {
         </Button>
 
         {showPlatforms && (
-          <div className="absolute top-64 z-10">
+          <div className="absolute top-64 z-20">
             <Platforms
               onClick={(option) => {
                 handleClick(option);
+                handlePlatform(option.parent_query);
                 setPlatformsValue(option.platformName);
                 setShowPlatforms(false);
               }}
