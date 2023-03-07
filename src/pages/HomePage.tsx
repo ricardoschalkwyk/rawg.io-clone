@@ -1,9 +1,9 @@
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Bars3Icon } from "@heroicons/react/24/solid";
-import { useEffect } from "react";
 import { faNetworkWired } from "@fortawesome/free-solid-svg-icons";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 
 import Api from "../api";
 
@@ -45,7 +45,10 @@ const HomePage = () => {
 
         {/* Select display */}
         <div className="flex items-center gap-1">
-          <div className="flex items-center">Display_options:</div>
+          <div className="flex items-center gap-1 text-sm text-brand-scorpion-gray">
+            <span>Display</span>
+            <span>options:</span>
+          </div>
           <div className="ml-4 flex gap-2">
             <Button className="bg-brand-dark py-3 px-4 hover:bg-brand-gray">
               {<Bars3Icon className="h-4 w-4" />}

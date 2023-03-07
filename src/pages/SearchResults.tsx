@@ -1,21 +1,17 @@
-import { Bars3Icon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 import { Game, GetResult } from "../types";
 
 import Api from "../api";
 
 import Button from "../components/Button";
 import GameCard from "../components/GameComp/GameCard";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
 
 interface Columns {
   results: Game[];
 }
 
 const SearchResults = () => {
-  const results = useSelector((state: RootState) => state.games.data);
-
   const [columns, setColumns] = useState<Columns[]>([
     {
       results: [],

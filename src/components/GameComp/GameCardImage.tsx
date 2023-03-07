@@ -1,6 +1,7 @@
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
 import { Game } from "../../types";
 import Button from "../Button";
 

@@ -12,7 +12,7 @@ interface OrderByProps {
 const OrderBy = ({ order, onClick }: OrderByProps) => {
   return (
     <div className="flex w-[177px] flex-col justify-start gap-1 rounded-md bg-white p-2 text-xs font-light text-black">
-      {order.map((option, index) => (
+      {order.map((option) => (
         <div
           key={option.id}
           className="flex items-center gap-1 rounded-md p-1 px-2 hover:bg-gray-200"

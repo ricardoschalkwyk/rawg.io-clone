@@ -3,7 +3,7 @@ import GameScreenshots from "./GameScreenshots";
 
 const GameSelected = () => {
   return (
-    <div className="ml-20 flex gap-12">
+    <div className="ml-20 mt-6 flex gap-12">
       <GameDetails />
       <GameScreenshots />
     </div>

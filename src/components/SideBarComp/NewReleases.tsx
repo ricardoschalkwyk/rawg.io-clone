@@ -1,30 +1,41 @@
-import Button from "../Button";
-import { FireIcon, ForwardIcon, StarIcon } from "@heroicons/react/24/solid";
+import {
+  CalendarIcon,
+  FireIcon,
+  ForwardIcon,
+  StarIcon,
+} from "@heroicons/react/24/solid";
+
+import NavLink from "../NavLink";
+import Icon from "../Icon";
+
+type Props = {
+  name: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+};
 
 const NewReleases = () => {
+  const Options: Props[] = [
+    { name: "Last 30 days", icon: StarIcon },
+    { name: "This week", icon: FireIcon },
+    { name: "Next week", icon: ForwardIcon },
+    { name: "Release calender", icon: CalendarIcon },
+  ];
+
   return (
     <div className="space-y-2">
-      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
-        <StarIcon className="h-7 w-7 rounded-md bg-brand-gray p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
-        <div>Last 30 days</div>
-      </Button>
-
-      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
-        <FireIcon className="h-7 w-7 rounded-md bg-brand-gray p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
-        <div>This week</div>
-      </Button>
-
-      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
-        <ForwardIcon className="h-7 w-7 rounded-md bg-brand-gray p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
-        <div>Next week</div>
-      </Button>
-
-      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-brand-gray p-0.5 font-bold duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray">
-          31
-        </div>
-        <div>Release calender</div>
-      </Button>
+      {Options.map((item, index) => (
+        <NavLink
+          to={""}
+          key={index}
+          className="group flex w-full items-center gap-2 border-solid text-lg font-thin"
+        >
+          <Icon
+            icon={item.icon}
+            className="h-8 w-8 rounded-md bg-brand-gray p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray"
+          />
+          <div>{item.name}</div>
+        </NavLink>
+      ))}
     </div>
   );
 };

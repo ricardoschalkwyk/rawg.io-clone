@@ -1,15 +1,16 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import Button from "../../Button";
 import Platforms from "../Platforms";
-import { GetResult } from "../../../types";
-import Api from "../../../api";
 import { setGames } from "../../../store/games";
-import { useDispatch } from "react-redux";
+import { GetResult } from "../../../types";
 
-interface Other {
+import Api from "../../../api";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
+interface child_query {
   id: number;
   platformName: string;
   selected: boolean;
@@ -19,6 +20,8 @@ export interface PlatformOption {
   id: number;
   platformName: string;
   selected: boolean;
+  active?: boolean;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   parent_query:
     | "1" // PC
     | "2" // PlayStation
@@ -36,13 +39,13 @@ export interface PlatformOption {
     | "49" // NES
     | "14"; // Web
 
-  other?: Other[];
+  child_query?: child_query[];
 }
 
 const platformsOptions: PlatformOption[] = [
   {
     id: 1,
-    platformName: "Pc",
+    platformName: "PC",
     selected: false,
     parent_query: "1",
   },
@@ -51,8 +54,10 @@ const platformsOptions: PlatformOption[] = [
     id: 2,
     platformName: "PlayStation",
     selected: false,
+    active: false,
     parent_query: "2",
-    other: [
+    icon: ChevronRightIcon,
+    child_query: [
       {
         id: 1,
         platformName: "PlayStation 4",
@@ -70,26 +75,26 @@ const platformsOptions: PlatformOption[] = [
     id: 3,
     platformName: "Xbox",
     selected: false,
+    active: false,
     parent_query: "3",
-    other: [
+    icon: ChevronRightIcon,
+    child_query: [
       {
         id: 1,
         platformName: "Xbox One",
         selected: false,
-        // Add
       },
       {
         id: 2,
         platformName: "Xbox Series X",
         selected: false,
-        // Add
       },
     ],
   },
 
   {
     id: 4,
-    platformName: "IOS",
+    platformName: "iOS",
     selected: false,
     parent_query: "4",
   },
@@ -119,19 +124,19 @@ const platformsOptions: PlatformOption[] = [
     id: 8,
     platformName: "Nintendo",
     selected: false,
+    active: false,
     parent_query: "7",
-    other: [
+    icon: ChevronRightIcon,
+    child_query: [
       {
         id: 1,
         platformName: "Nintendo Switch",
         selected: false,
-        // Add
       },
       {
         id: 2,
         platformName: "Nes",
         selected: false,
-        // Add
       },
     ],
   },
@@ -140,7 +145,6 @@ const platformsOptions: PlatformOption[] = [
 const PlatformsFilterDiv = () => {
   const [showPlatforms, setShowPlatforms] = useState(false);
   const [platformsValue, setPlatformsValue] = useState("Platforms");
-
   const [options, setOptions] = useState(platformsOptions);
 
   const dispatch = useDispatch();
@@ -160,7 +164,7 @@ const PlatformsFilterDiv = () => {
     try {
       // Get input for the search
       const { results } = await Api.get<GetResult>(
-        `&ordering=parent_platforms&${option}`
+        `&ordering=&parent_platforms=${option.parent_query}`
       );
 
       dispatch(setGames(results));
@@ -192,7 +196,7 @@ const PlatformsFilterDiv = () => {
             <Platforms
               onClick={(option) => {
                 handleClick(option);
-                handlePlatform(option.parent_query);
+                handlePlatform(option);
                 setPlatformsValue(option.platformName);
                 setShowPlatforms(false);
               }}
@@ -204,7 +208,5 @@ const PlatformsFilterDiv = () => {
     </>
   );
 };
-
-PlatformsFilterDiv.propTypes = {};
 
 export default PlatformsFilterDiv;

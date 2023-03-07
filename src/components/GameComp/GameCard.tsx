@@ -2,9 +2,13 @@ import { format } from "date-fns";
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faLinux,
   faPlaystation,
   faWindows,
   faXbox,
+  faAndroid,
+  faApple,
+  faAppStoreIos,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faChevronRight,
@@ -17,6 +21,7 @@ import clsx from "clsx";
 import { Game } from "../../types";
 import Button from "../Button";
 import GameCardImage from "./GameCardImage";
+import { Link, useNavigate } from "react-router-dom";
 interface GameDefaults {
   title?: string;
   game?: Game;
@@ -27,6 +32,7 @@ interface GameDefaults {
 }
 
 const GameCard = ({ game }: GameDefaults) => {
+  const navigate = useNavigate();
   const div = useRef<HTMLDivElement>(null);
 
   const [height, setHeight] = useState(0);
@@ -75,6 +81,7 @@ const GameCard = ({ game }: GameDefaults) => {
                           icon={faWindows}
                         />
                       );
+
                     case "PlayStation":
                       return (
                         <FontAwesomeIcon
@@ -88,6 +95,38 @@ const GameCard = ({ game }: GameDefaults) => {
                         <FontAwesomeIcon
                           key={platform.platform.id}
                           icon={faXbox}
+                        />
+                      );
+
+                    case "Linux":
+                      return (
+                        <FontAwesomeIcon
+                          key={platform.platform.id}
+                          icon={faLinux}
+                        />
+                      );
+
+                    case "iOS":
+                      return (
+                        <FontAwesomeIcon
+                          key={platform.platform.id}
+                          icon={faAppStoreIos}
+                        />
+                      );
+
+                    case "Android":
+                      return (
+                        <FontAwesomeIcon
+                          key={platform.platform.id}
+                          icon={faAndroid}
+                        />
+                      );
+
+                    case "Apple Macintosh":
+                      return (
+                        <FontAwesomeIcon
+                          key={platform.platform.id}
+                          icon={faApple}
                         />
                       );
 
@@ -106,8 +145,8 @@ const GameCard = ({ game }: GameDefaults) => {
             </div>
 
             {/* Game title */}
-            <div className="mb-2 flex justify-start pt-2 text-2xl font-bold uppercase">
-              {game.name}
+            <div className="mb-2 flex justify-self-start pt-2 text-2xl font-bold uppercase">
+              <Link to={"/game"}>{game.name}</Link>
             </div>
 
             {/* Owned status */}

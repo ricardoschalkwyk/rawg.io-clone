@@ -1,17 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import DisplayPage from "./pages/DisplayPage";
 import HomePage from "./pages/HomePage";
-import LandingPage from "./pages/LandingPage";
+import DisplayPage from "./pages/DisplayPage";
 
 function App() {
   // {Basic functionality}
-  // Add more data and test filter implementation
+  // Test filter implementation
+  // Add api queries to platforms filter
 
   // {OrderBy component}
   // Icon doesn't show after clicking if setShow() is used
-
-  // ADD api queries to filter
 
   // {GameSelected}
   // Create display for component
@@ -21,8 +19,7 @@ function App() {
     <div>
       <Routes>
         <Route path={"/"} element={<Layout />}>
-          <Route path={"/landing"} element={<LandingPage />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/game" element={<DisplayPage />} />
         </Route>
       </Routes>

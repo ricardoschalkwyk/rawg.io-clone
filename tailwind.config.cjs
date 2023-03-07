@@ -10,8 +10,23 @@ module.exports = {
           dark: "#202020",
           white: "#FFFFFF",
           "light-gray": "#767676",
+          "text-gray": "#969696",
           "scorpion-gray": "#5f5f5f",
           "meta-green": "#6dc849",
+        },
+
+        rating: {
+          "blue-light": "#649bff",
+          "blue-dark": "#4354b9",
+
+          "green-light": "#b4ec51",
+          "green-dark": "#429321",
+
+          "orange-light": "#fad961",
+          "orange-dark": "#f76b1c",
+
+          "red-light": "#ff5764",
+          "red-dark": "#f11a2a",
         },
       },
     },

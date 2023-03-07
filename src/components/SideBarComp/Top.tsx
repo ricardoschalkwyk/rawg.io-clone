@@ -1,32 +1,38 @@
-import Button from "../Button";
 import {
-  BarsArrowUpIcon,
   ChartBarIcon,
+  GlobeAltIcon,
   TrophyIcon,
 } from "@heroicons/react/24/solid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCrown } from "@fortawesome/free-solid-svg-icons";
 
+import NavLink from "../NavLink";
+import Icon from "../Icon";
+
+type Props = {
+  name: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+};
 const Top = () => {
+  const Options: Props[] = [
+    { name: "Best of the year", icon: TrophyIcon },
+    { name: "Popular in 2022", icon: ChartBarIcon },
+    { name: "All time best", icon: GlobeAltIcon },
+  ];
+
   return (
     <div className="space-y-2">
-      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
-        <TrophyIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
-        <div>Best of the year</div>
-      </Button>
-
-      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
-        <ChartBarIcon className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray" />
-        <div>Popular in 2022</div>
-      </Button>
-
-      <Button className="group flex w-full items-center gap-2 border-solid text-lg font-thin">
-        <FontAwesomeIcon
-          icon={faCrown}
-          className="h-7 w-7 rounded-md bg-brand-gray p-0.5 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray"
-        />
-        <div>All time best</div>
-      </Button>
+      {Options.map((item, index) => (
+        <NavLink
+          to={""}
+          key={index}
+          className="group flex w-full items-center gap-2 border-solid text-lg font-thin"
+        >
+          <Icon
+            icon={item.icon}
+            className="h-7 w-7 rounded-md bg-brand-gray p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray"
+          />
+          <div>{item.name}</div>
+        </NavLink>
+      ))}
     </div>
   );
 };
