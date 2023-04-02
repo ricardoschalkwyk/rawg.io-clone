@@ -1,7 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import Icon from "./Icon";
-import { CalendarIcon } from "@heroicons/react/24/solid";
 
 interface Props {
   className?: string;

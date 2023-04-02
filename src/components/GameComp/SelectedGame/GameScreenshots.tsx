@@ -15,6 +15,8 @@ const GameScreenshots = () => {
           Play full video
         </Button>
       </div>
+
+      {/* Preview Images */}
       <div className="mt-4 grid shrink-0 grid-cols-2 gap-5">
         <div className="rounded-md bg-gray-300 px-16 py-10">image 1</div>
         <div className="rounded-md bg-gray-300">image 2</div>

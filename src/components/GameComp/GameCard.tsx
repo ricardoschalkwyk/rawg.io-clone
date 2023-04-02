@@ -68,8 +68,8 @@ const GameCard = ({ game }: GameDefaults) => {
           {/* Game image */}
           {game.background_image && <GameCardImage game={game} hover={hover} />}
 
-          {/* Icon display */}
           <div className="p-4">
+            {/* Icon display */}
             <div className="flex items-center justify-between">
               <div className="flex gap-1.5 text-sm">
                 {game.parent_platforms.map((platform, index) => {

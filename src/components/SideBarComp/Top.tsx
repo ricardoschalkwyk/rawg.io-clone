@@ -28,7 +28,7 @@ const Top = () => {
         >
           <Icon
             icon={item.icon}
-            className="h-7 w-7 rounded-md bg-brand-gray p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray"
+            className="h-8 w-8 rounded-md bg-brand-gray p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray"
           />
           <div>{item.name}</div>
         </NavLink>
