@@ -3,6 +3,7 @@ import { Game } from "../../types";
 
 interface GameState {
   data: Game[];
+  gameData?: Game[];
   columns: Columns[];
   button: boolean;
 }
@@ -51,9 +52,13 @@ export const gamesSlice = createSlice({
     gameActive: (state, action) => {
       state.button = true;
     },
+
+    findGame: (state, action) => {
+      state.gameData = action.payload;
+    },
   },
 });
 
-export const { gameActive, setGames } = gamesSlice.actions;
+export const { gameActive, setGames, findGame } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

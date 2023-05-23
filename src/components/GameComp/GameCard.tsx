@@ -21,7 +21,7 @@ import clsx from "clsx";
 import { Game } from "../../types";
 import Button from "../Button";
 import GameCardImage from "./GameCardImage";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 interface GameDefaults {
   title?: string;
   game?: Game;
@@ -32,7 +32,6 @@ interface GameDefaults {
 }
 
 const GameCard = ({ game }: GameDefaults) => {
-  const navigate = useNavigate();
   const div = useRef<HTMLDivElement>(null);
 
   const [height, setHeight] = useState(0);
