@@ -14,7 +14,7 @@ const SideBar = () => {
       <div className="mt-24 w-60 flex-col justify-start">
         <div className="space-y-6">
           <Button
-            onClick={() => navigate("home")}
+            onClick={() => navigate("/")}
             className="text-2xl font-semibold"
           >
             Home
