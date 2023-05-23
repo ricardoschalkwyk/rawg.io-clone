@@ -21,7 +21,9 @@ import clsx from "clsx";
 import { Game } from "../../types";
 import Button from "../Button";
 import GameCardImage from "./GameCardImage";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { findGame } from "../../store/games";
 interface GameDefaults {
   title?: string;
   game?: Game;
@@ -32,6 +34,8 @@ interface GameDefaults {
 }
 
 const GameCard = ({ game }: GameDefaults) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const div = useRef<HTMLDivElement>(null);
 
   const [height, setHeight] = useState(0);
@@ -145,7 +149,14 @@ const GameCard = ({ game }: GameDefaults) => {
 
             {/* Game title */}
             <div className="mb-2 flex justify-self-start pt-2 text-2xl font-bold uppercase">
-              <Link to={"/game"}>{game.name}</Link>
+              <Button
+                onClick={() => {
+                  dispatch(findGame(game.id));
+                  navigate("/game");
+                }}
+              >
+                {game.name}
+              </Button>
             </div>
 
             {/* Owned status */}

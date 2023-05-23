@@ -1,10 +1,7 @@
-// MY friend helped with the setup of this API
 const API_KEY = import.meta.env.VITE_API_URL;
-const API_ID = 3498;
 const BASE_URL = `https://api.rawg.io/api/games?key=${API_KEY}&page=1&page_size=300`;
-const GAME_URL = `https://api.rawg.io/api/games/${API_ID}?key=${API_KEY}`;
+const GAME_URL = `https://api.rawg.io/api/games/`;
 
-// Error Control.
 const Api = {
   get<T>(url: string): Promise<T> {
     return new Promise((resolve, reject) => {
@@ -21,7 +18,7 @@ const Api = {
 
   getGame<T>(url: string): Promise<T> {
     return new Promise((resolve, reject) => {
-      fetch(GAME_URL + url).then((res) => {
+      fetch(GAME_URL + url + API_KEY).then((res) => {
         // Check is res is ok
         return res.ok
           ? // If it is then resolve

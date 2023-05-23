@@ -1,8 +1,9 @@
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Button from "../../Button";
 
-const GameScreenshots = ({ game }: any) => {
+const GameScreenshots = () => {
   return (
     <div className="mt-20 flex flex-col items-center justify-center">
       <div className="relative rounded-md bg-gray-300 px-44 py-24">

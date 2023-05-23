@@ -28,6 +28,7 @@ const initialState: GameState = {
     },
   ],
   data: [],
+  gameData: [],
   button: false,
 };
 
