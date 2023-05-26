@@ -13,15 +13,17 @@ export interface OrderOption {
   id: number;
   orderName: string;
   selected: boolean;
-  query:
-    | "name"
-    | "relevance"
-    | "released"
-    | "added"
-    | "created"
-    | "updated"
-    | "rating";
+  query: Orders;
 }
+
+type Orders =
+  | "name"
+  | "relevance"
+  | "released"
+  | "added"
+  | "created"
+  | "updated"
+  | "rating";
 
 const orderOptions: OrderOption[] = [
   {
@@ -83,7 +85,7 @@ const OrderByFilterDiv = () => {
     setOptions(newArray);
   };
 
-  const handleOrder = async (option: OrderOption) => {
+  const handleOrder = async (option: Orders) => {
     try {
       // Get input for the search
       const { results } = await Api.get<GetResult>(
