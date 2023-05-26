@@ -28,7 +28,7 @@ const SearchResults = () => {
   ]);
 
   const getGames = async () => {
-    const { results } = await Api.get<GetResult>("");
+    const { results } = await Api.get<GetResult>("/games?page=1&page_size=300");
 
     console.log("🚀 ~ getGames ~ results", results);
 

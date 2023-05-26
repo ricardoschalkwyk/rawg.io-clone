@@ -164,7 +164,7 @@ const PlatformsFilterDiv = () => {
     try {
       // Get input for the search
       const { results } = await Api.get<GetResult>(
-        `&ordering=&parent_platforms=${option.parent_query}`
+        `/games?page=1&page_size=300&ordering=&parent_platforms=${option.parent_query}`
       );
 
       dispatch(setGames(results));

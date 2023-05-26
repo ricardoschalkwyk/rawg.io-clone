@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Game } from "../../types";
+import { Game, GameDetail } from "../../types";
 
 interface GameState {
   data: Game[];
-  gameData?: Game[];
+  gameData?: GameDetail;
   columns: Columns[];
   button: boolean;
 }
@@ -28,7 +28,7 @@ const initialState: GameState = {
     },
   ],
   data: [],
-  gameData: [],
+  gameData: undefined,
   button: false,
 };
 
@@ -40,7 +40,6 @@ export const gamesSlice = createSlice({
       state.data = action.payload;
       state.columns = state.columns.map((column, index) => {
         const numberThing = Math.ceil(state.data.length / 4);
-
         return {
           results: state.data.slice(
             index * numberThing,
@@ -49,17 +48,15 @@ export const gamesSlice = createSlice({
         };
       });
     },
-
     gameActive: (state, action) => {
       state.button = true;
     },
-
-    findGame: (state, action) => {
+    setGame: (state, action) => {
       state.gameData = action.payload;
     },
   },
 });
 
-export const { gameActive, setGames, findGame } = gamesSlice.actions;
+export const { gameActive, setGames, setGame } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

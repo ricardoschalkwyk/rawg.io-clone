@@ -7,8 +7,17 @@ import {
 } from "@heroicons/react/24/solid";
 
 import Button from "../../Button";
+import { GameDetail } from "../../../types";
 
-const GameDetails = ({ game }: any) => {
+type Props = {
+  game?: GameDetail;
+};
+
+const GameDetails = ({ game }: Props) => {
+  if (!game) {
+    return null;
+  }
+
   return (
     <div>
       <div className="mt-8 flex ">

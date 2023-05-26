@@ -23,7 +23,7 @@ import Button from "../Button";
 import GameCardImage from "./GameCardImage";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { findGame } from "../../store/games";
+import { setGame } from "../../store/games";
 interface GameDefaults {
   title?: string;
   game?: Game;
@@ -34,7 +34,6 @@ interface GameDefaults {
 }
 
 const GameCard = ({ game }: GameDefaults) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const div = useRef<HTMLDivElement>(null);
 
@@ -151,8 +150,7 @@ const GameCard = ({ game }: GameDefaults) => {
             <div className="mb-2 flex justify-self-start pt-2 text-2xl font-bold uppercase">
               <Button
                 onClick={() => {
-                  dispatch(findGame(game.id));
-                  navigate("/game");
+                  navigate(`/game/${game.id}`);
                 }}
               >
                 {game.name}

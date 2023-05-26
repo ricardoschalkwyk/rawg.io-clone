@@ -35,7 +35,9 @@ const NewReleases = () => {
   const handleDates = async (option: Props) => {
     try {
       // Get input for the search
-      const { results } = await Api.get<GetResult>(`&ordering=${option}`);
+      const { results } = await Api.get<GetResult>(
+        `/games?page=1&page_size=300&ordering=${option}`
+      );
 
       dispatch(setGames(results));
       console.log("🚀 ~ getGames ~ results", results);

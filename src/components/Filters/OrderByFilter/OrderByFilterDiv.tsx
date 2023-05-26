@@ -86,7 +86,9 @@ const OrderByFilterDiv = () => {
   const handleOrder = async (option: OrderOption) => {
     try {
       // Get input for the search
-      const { results } = await Api.get<GetResult>(`&ordering=${option}`);
+      const { results } = await Api.get<GetResult>(
+        `/games?page=1&page_size=300&ordering=${option}`
+      );
 
       dispatch(setGames(results));
       console.log("🚀 ~ getGames ~ results", results);
