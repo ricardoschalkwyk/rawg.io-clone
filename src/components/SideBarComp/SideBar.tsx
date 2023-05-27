@@ -12,51 +12,53 @@ const SideBar = () => {
 
   return (
     <div className="relative">
-      <div className="mt-24 w-60 flex-col justify-start">
+      <div className="mt-24 w-72 flex-col justify-start">
         <div className="space-y-6">
           <Button
             onClick={() => navigate("/")}
-            className="text-2xl font-semibold"
+            className="text-2xl font-semibold 2xl:text-4xl"
           >
             Home
           </Button>
-          <div className="text-2xl font-semibold">Reviews</div>
+          <div className="text-2xl font-semibold 2xl:text-4xl">Reviews</div>
         </div>
 
         <div className="mt-6">
-          <div className="text-2xl font-semibold">New Releases</div>
+          <div className="text-2xl font-semibold 2xl:text-4xl">
+            New Releases
+          </div>
           <div className="mt-2">
             <NewReleases />
           </div>
         </div>
 
         <div className="mt-4">
-          <div className="text-2xl font-semibold">Top</div>
+          <div className="text-2xl font-semibold 2xl:text-4xl">Top</div>
           <div className="mt-2">
             <Top />
           </div>
         </div>
 
         <div className="mt-4">
-          <div className="text-2xl font-semibold">All Games</div>
+          <div className="text-2xl font-semibold 2xl:text-4xl">All Games</div>
         </div>
 
         <div className="mt-4">
-          <div className="text-2xl font-semibold">Browse</div>
+          <div className="text-2xl font-semibold 2xl:text-4xl">Browse</div>
           <div className="mt-2">
             <Browse />
           </div>
         </div>
 
         <div className="mt-4">
-          <div className="text-2xl font-semibold">Platforms</div>
+          <div className="text-2xl font-semibold 2xl:text-4xl">Platforms</div>
           <div className="mt-2">
             <Platforms />
           </div>
         </div>
 
         <div className="mt-4">
-          <div className="text-2xl font-semibold">Genre</div>
+          <div className="text-2xl font-semibold 2xl:text-4xl">Genre</div>
           <div className="mt-2">
             <Genre />
           </div>

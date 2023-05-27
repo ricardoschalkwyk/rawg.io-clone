@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <div className="mt-7 flex w-full items-center">
-      <div className="mr-12 flex shrink-0 items-center gap-1 text-xl font-bold uppercase text-brand-white">
+      <div className="mr-12 flex shrink-0 items-center gap-1 text-xl font-bold uppercase text-brand-white 2xl:text-2xl">
         <h1>rawg</h1>
       </div>
 
@@ -33,7 +33,7 @@ const Navbar = () => {
 
       {/* Search bar */}
       <div className="group relative mx-6 flex w-full items-center gap-2">
-        <MagnifyingGlassIcon className="absolute left-3 h-4 w-4 font-bold group-focus-within:text-brand-black group-hover:text-brand-black" />
+        <MagnifyingGlassIcon className="absolute left-3 h-4 w-4 font-bold group-focus-within:text-brand-black group-hover:text-brand-black 2xl:h-6 2xl:w-6" />
         <form
           className="w-full"
           onSubmit={async (e) => {
@@ -54,7 +54,7 @@ const Navbar = () => {
           }}
         >
           <Input
-            className="w-full appearance-none rounded-full bg-brand-gray px-10 py-3 text-sm font-light text-brand-light-gray outline-none transition duration-150 ease-in-out focus:bg-brand-white group-hover:bg-brand-white group-hover:text-brand-black"
+            className="w-full appearance-none rounded-full bg-brand-gray px-10 py-3 text-sm font-light text-brand-light-gray outline-none transition duration-150 ease-in-out focus:bg-brand-white group-hover:bg-brand-white group-hover:text-brand-black 2xl:py-4 2xl:text-lg"
             type="text"
             placeholder={`Search ${format} games`}
             value={userInput}

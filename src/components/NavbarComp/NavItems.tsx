@@ -3,7 +3,7 @@ import { EllipsisHorizontalIcon } from "@heroicons/react/24/solid";
 
 const NavItems = () => {
   return (
-    <div className="ml-6 text-sm font-normal">
+    <div className="ml-6 text-sm font-normal 2xl:text-xl">
       <div className="flex w-full items-center justify-center gap-5 uppercase">
         <NavLink
           className="flex shrink-0 gap-1 hover:underline hover:underline-offset-4"
@@ -23,7 +23,7 @@ const NavItems = () => {
           <span>Api</span>
         </NavLink>
         <div className="flex">
-          <EllipsisHorizontalIcon className="h-5 w-5" />
+          <EllipsisHorizontalIcon className="h-5 w-5 2xl:h-10 2xl:w-10" />
         </div>
       </div>
     </div>

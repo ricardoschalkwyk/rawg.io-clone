@@ -52,7 +52,7 @@ const NewReleases = () => {
         <NavLink
           to={""}
           key={index}
-          className="group flex w-full items-center gap-2 border-solid text-lg font-thin"
+          className="group flex w-full items-center gap-2 border-solid text-lg font-thin 2xl:text-2xl"
           onClick={() => handleDates(item.query)}
         >
           <Icon

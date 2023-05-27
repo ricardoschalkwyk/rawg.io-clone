@@ -183,7 +183,7 @@ const PlatformsFilterDiv = () => {
           }}
           className="flex items-center space-x-3 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray"
         >
-          <div className="flex items-center gap-1 font-light">
+          <div className="flex items-center gap-1 font-light 2xl:text-lg">
             <span className="font-normal">{platformsValue}</span>
           </div>
           <span className="text-brand-light-gray">
