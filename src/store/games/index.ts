@@ -3,6 +3,7 @@ import { Game, GameDetail } from "../../types";
 
 interface GameState {
   data: Game[];
+  count: number;
   gameData?: GameDetail;
   columns: Columns[];
   button: boolean;
@@ -27,6 +28,7 @@ const initialState: GameState = {
       results: [],
     },
   ],
+  count: 0,
   data: [],
   gameData: undefined,
   button: false,
@@ -37,7 +39,8 @@ export const gamesSlice = createSlice({
   initialState,
   reducers: {
     setGames: (state, action) => {
-      state.data = action.payload;
+      state.data = action.payload.results;
+      state.count = action.payload.count;
       state.columns = state.columns.map((column, index) => {
         const numberThing = Math.ceil(state.data.length / 4);
         return {

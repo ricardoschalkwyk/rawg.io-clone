@@ -88,11 +88,11 @@ const OrderByFilterDiv = () => {
   const handleOrder = async (option: Orders) => {
     try {
       // Get input for the search
-      const { results } = await Api.get<GetResult>(
+      const { results, count } = await Api.get<GetResult>(
         `/games?page=1&page_size=300&ordering=${option}`
       );
 
-      dispatch(setGames(results));
+      dispatch(setGames({ results, count }));
       console.log("🚀 ~ getGames ~ results", results);
     } catch (error) {
       alert("Item not found");

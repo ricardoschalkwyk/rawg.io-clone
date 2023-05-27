@@ -14,7 +14,8 @@ import NavItems from "./NavItems";
 import Input from "../Input";
 
 const Navbar = () => {
-  const games = useSelector((state: RootState) => state.games.data);
+  const count = useSelector((state: RootState) => state.games.count);
+  const format = new Intl.NumberFormat().format(count);
   // This state is used for the selection of how many results the user wants
   const [userInput, setUserInput] = useState("");
 
@@ -41,11 +42,11 @@ const Navbar = () => {
 
             try {
               // Get input for the search
-              const { results } = await Api.get<GetResult>(
+              const { results, count } = await Api.get<GetResult>(
                 `/games?page=1&page_size=300&search=${userInput}`
               );
 
-              dispatch(setGames(results));
+              dispatch(setGames({ results, count }));
               console.log("🚀 ~ getGames ~ results", results);
             } catch (error) {
               alert("Item not found");
@@ -55,7 +56,7 @@ const Navbar = () => {
           <Input
             className="w-full appearance-none rounded-full bg-brand-gray px-10 py-3 text-sm font-light text-brand-light-gray outline-none transition duration-150 ease-in-out focus:bg-brand-white group-hover:bg-brand-white group-hover:text-brand-black"
             type="text"
-            placeholder={`Search ${games.length} games`}
+            placeholder={`Search ${format} games`}
             value={userInput}
             onChange={(e) => {
               setUserInput(e);

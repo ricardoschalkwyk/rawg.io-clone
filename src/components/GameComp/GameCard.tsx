@@ -22,8 +22,7 @@ import { Game } from "../../types";
 import Button from "../Button";
 import GameCardImage from "./GameCardImage";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setGame } from "../../store/games";
+
 interface GameDefaults {
   title?: string;
   game?: Game;
@@ -72,79 +71,81 @@ const GameCard = ({ game }: GameDefaults) => {
 
           <div className="p-4">
             {/* Icon display */}
-            <div className="flex items-center justify-between">
-              <div className="flex gap-1.5 text-sm">
-                {game.parent_platforms.map((platform, index) => {
-                  switch (platform.platform.name) {
-                    case "PC":
-                      return (
-                        <FontAwesomeIcon
-                          key={platform.platform.id}
-                          icon={faWindows}
-                        />
-                      );
+            {game.parent_platforms && (
+              <div className="flex items-center justify-between">
+                <div className="flex gap-1.5 text-sm">
+                  {game.parent_platforms.map((platform, index) => {
+                    switch (platform.platform.name) {
+                      case "PC":
+                        return (
+                          <FontAwesomeIcon
+                            key={platform.platform.id}
+                            icon={faWindows}
+                          />
+                        );
 
-                    case "PlayStation":
-                      return (
-                        <FontAwesomeIcon
-                          key={platform.platform.id}
-                          icon={faPlaystation}
-                        />
-                      );
+                      case "PlayStation":
+                        return (
+                          <FontAwesomeIcon
+                            key={platform.platform.id}
+                            icon={faPlaystation}
+                          />
+                        );
 
-                    case "Xbox":
-                      return (
-                        <FontAwesomeIcon
-                          key={platform.platform.id}
-                          icon={faXbox}
-                        />
-                      );
+                      case "Xbox":
+                        return (
+                          <FontAwesomeIcon
+                            key={platform.platform.id}
+                            icon={faXbox}
+                          />
+                        );
 
-                    case "Linux":
-                      return (
-                        <FontAwesomeIcon
-                          key={platform.platform.id}
-                          icon={faLinux}
-                        />
-                      );
+                      case "Linux":
+                        return (
+                          <FontAwesomeIcon
+                            key={platform.platform.id}
+                            icon={faLinux}
+                          />
+                        );
 
-                    case "iOS":
-                      return (
-                        <FontAwesomeIcon
-                          key={platform.platform.id}
-                          icon={faAppStoreIos}
-                        />
-                      );
+                      case "iOS":
+                        return (
+                          <FontAwesomeIcon
+                            key={platform.platform.id}
+                            icon={faAppStoreIos}
+                          />
+                        );
 
-                    case "Android":
-                      return (
-                        <FontAwesomeIcon
-                          key={platform.platform.id}
-                          icon={faAndroid}
-                        />
-                      );
+                      case "Android":
+                        return (
+                          <FontAwesomeIcon
+                            key={platform.platform.id}
+                            icon={faAndroid}
+                          />
+                        );
 
-                    case "Apple Macintosh":
-                      return (
-                        <FontAwesomeIcon
-                          key={platform.platform.id}
-                          icon={faApple}
-                        />
-                      );
+                      case "Apple Macintosh":
+                        return (
+                          <FontAwesomeIcon
+                            key={platform.platform.id}
+                            icon={faApple}
+                          />
+                        );
 
-                    default:
-                      return null;
-                  }
-                })}
-              </div>
-
-              {/* Critic score */}
-              {game.metacritic && (
-                <div className="inline-flex rounded-md border border-solid border-brand-meta-green/40 py-1 px-1.5 text-sm font-bold leading-none text-brand-meta-green">
-                  {game.metacritic}
+                      default:
+                        return null;
+                    }
+                  })}
                 </div>
-              )}
-            </div>
+
+                {/* Critic score */}
+                {game.metacritic && (
+                  <div className="inline-flex rounded-md border border-solid border-brand-meta-green/40 py-1 px-1.5 text-sm font-bold leading-none text-brand-meta-green">
+                    {game.metacritic}
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Game title */}
             <div className="mb-2 flex justify-self-start pt-2 text-2xl font-bold uppercase">

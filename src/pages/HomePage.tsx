@@ -24,9 +24,11 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const getGames = async () => {
-    const { results } = await Api.get<GetResult>("/games?page=1&page_size=300");
+    const { results, count } = await Api.get<GetResult>(
+      "/games?page=1&page_size=300"
+    );
 
-    dispatch(setGames(results));
+    dispatch(setGames({ results, count }));
   };
 
   useEffect(() => {

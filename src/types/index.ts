@@ -62,7 +62,7 @@ export interface Game {
   saturated_color: Color;
   dominant_color: Color;
   platforms: PlatformElement[];
-  parent_platforms: ParentPlatform[];
+  parent_platforms?: ParentPlatform[];
   genres: Genre[];
   stores: Store[];
   clip?: null;
@@ -116,7 +116,7 @@ export interface GameDetail {
   reviews_count: number;
   saturated_color: string;
   dominant_color: string;
-  parent_platforms: ParentPlatform[];
+  parent_platforms?: ParentPlatform[];
   platforms: Platform2[];
   stores: Store[];
   developers: Developer[];
