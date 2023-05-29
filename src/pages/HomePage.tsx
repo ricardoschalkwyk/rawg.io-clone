@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNetworkWired } from "@fortawesome/free-solid-svg-icons";
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import { useSearchParams } from "react-router-dom";
 
 import Api from "../api";
 
 import { GetResult } from "../types";
 import { RootState } from "../store";
-import { setGames } from "../store/games";
+import { setGameNull, setGames } from "../store/games";
 
 import Button from "../components/Button";
 import GameCard from "../components/GameComp/GameCard";
@@ -33,13 +33,14 @@ const HomePage = () => {
 
   useEffect(() => {
     getGames();
+    dispatch(setGameNull());
   }, []);
 
   return (
-    <div className="w-full">
-      <div className="mt-10">
-        <div className="text-7xl font-bold">New and trending</div>
-        <div>Based on player count and release date</div>
+    <div>
+      <div className="mt-10 text-center md:text-start">
+        <div className="text-4xl font-bold md:text-7xl">New and trending</div>
+        <div className="mt-2">Based on player count and release date</div>
       </div>
 
       <div className="flex items-center justify-between">
@@ -49,7 +50,7 @@ const HomePage = () => {
         </div>
 
         {/* Select display */}
-        <div className="flex items-center gap-1">
+        <div className="mt-6 hidden items-center gap-1 lg:flex">
           <div className="flex items-center gap-1 text-sm text-brand-scorpion-gray">
             <span>Display</span>
             <span>options:</span>
@@ -69,7 +70,7 @@ const HomePage = () => {
       </div>
 
       {/* GameCards */}
-      <div className="mt-8 grid grid-cols-4 items-start gap-6">
+      <div className="mt-8 grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {columns.map((column, index) => (
           <div key={index} className="flex flex-col gap-6">
             {column.results.map((game, gIndex) => (
@@ -81,7 +82,5 @@ const HomePage = () => {
     </div>
   );
 };
-
-HomePage.propTypes = {};
 
 export default HomePage;

@@ -20,7 +20,7 @@ const GameDetails = ({ game }: Props) => {
 
   return (
     <div>
-      <div className="mt-8 flex ">
+      <div className="mt-8 flex">
         <div className="text-xs font-light uppercase text-brand-light-gray">
           Home / Games / Game Name
         </div>
@@ -107,7 +107,7 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       {/* Color ratings */}
-      <div className="mt-10 flex flex-col justify-between">
+      <div className="mt-10 flex flex-col justify-between 2xl:pr-96">
         {/* Colour blocks */}
         <div className="flex w-full rounded-md">
           <div className="w-full rounded-l-md bg-gradient-to-b from-rating-green-light to-rating-green-dark py-3 hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]">
@@ -161,7 +161,7 @@ const GameDetails = ({ game }: Props) => {
       {/* About */}
       <div className="mt-10 flex flex-col gap-5">
         <h1 className="text-xl font-bold">About</h1>
-        <p>{game.description_raw}</p>
+        <p className="2xl:pr-96">{game.description_raw}</p>
       </div>
     </div>
   );

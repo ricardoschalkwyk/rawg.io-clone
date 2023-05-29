@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Game, GameDetail } from "../../types";
+import { Game, GameDetail, Root } from "../../types";
 
 interface GameState {
   data: Game[];
   count: number;
-  gameData?: GameDetail;
+  gameData?: GameDetail | null;
+  screenshots: Root[];
   columns: Columns[];
   button: boolean;
 }
@@ -30,7 +31,8 @@ const initialState: GameState = {
   ],
   count: 0,
   data: [],
-  gameData: undefined,
+  screenshots: [],
+  gameData: null,
   button: false,
 };
 
@@ -51,15 +53,22 @@ export const gamesSlice = createSlice({
         };
       });
     },
-    gameActive: (state, action) => {
+    gameActive: (state) => {
       state.button = true;
     },
     setGame: (state, action) => {
       state.gameData = action.payload;
     },
+    setScreenShots: (state, action) => {
+      state.screenshots = action.payload;
+    },
+    setGameNull: (state) => {
+      state.gameData = null;
+    },
   },
 });
 
-export const { gameActive, setGames, setGame } = gamesSlice.actions;
+export const { gameActive, setGames, setGame, setGameNull, setScreenShots } =
+  gamesSlice.actions;
 
 export default gamesSlice.reducer;

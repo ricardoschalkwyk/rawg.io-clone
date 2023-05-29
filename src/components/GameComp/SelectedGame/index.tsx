@@ -9,7 +9,7 @@ import GameScreenshots from "./GameScreenshots";
 import GameDetails from "./GameDetails";
 
 import { GameDetail } from "../../../types";
-import { setGame } from "../../../store/games";
+import { setGame, setScreenShots } from "../../../store/games";
 import { RootState } from "../../../store";
 
 const GameSelected = () => {
@@ -17,12 +17,7 @@ const GameSelected = () => {
   const { id } = useParams();
 
   const game = useSelector((state: RootState) => state.games.gameData);
-
-  // {} === {} <- by reference this never yields true
-  // [] === [] <- by reference this never yields true
-  // if ({} === {}) console.log('True');
-  // if ([] === []) console.log('True');
-  // const type = useSelector((state: RootState) => state.games.type, shallowEqual);
+  const screenShot = useSelector((state: RootState) => state.games.screenshots);
 
   const handleData = async () => {
     try {
@@ -35,8 +30,22 @@ const GameSelected = () => {
     }
   };
 
+  const handleScreenshots = async () => {
+    try {
+      const results = await Api.get<GameDetail>(
+        `/games/${id}/screenshots?page_size=5`
+      );
+
+      dispatch(setScreenShots(results));
+      console.log("🚀 ~ getGames ~ results", results);
+    } catch (error) {
+      alert("Item not found");
+    }
+  };
+
   useEffect(() => {
     handleData();
+    handleScreenshots();
   }, []);
 
   if (!game) {
@@ -44,9 +53,13 @@ const GameSelected = () => {
   }
 
   return (
-    <div className="ml-20 mt-6 flex gap-12">
-      <GameDetails game={game} />
-      <GameScreenshots />
+    <div className=" mt-6 flex gap-12">
+      <div>
+        <GameDetails game={game} />
+      </div>
+      <div>
+        <GameScreenshots />
+      </div>
     </div>
   );
 };

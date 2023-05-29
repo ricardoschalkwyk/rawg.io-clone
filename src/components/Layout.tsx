@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+
 import Navbar from "./NavbarComp/Navbar";
 import SideBar from "./SideBarComp/SideBar";
 
@@ -8,9 +9,14 @@ function Layout() {
       <div>
         <Navbar />
       </div>
-      <div className="flex">
-        <SideBar />
-        <Outlet />
+
+      <div className="flex 2xl:gap-12">
+        <div className="hidden lg:block">
+          <SideBar />
+        </div>
+        <div className="px-2 lg:px-0">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

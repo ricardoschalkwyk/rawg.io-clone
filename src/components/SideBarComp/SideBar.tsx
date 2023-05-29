@@ -12,7 +12,7 @@ const SideBar = () => {
 
   return (
     <div className="relative">
-      <div className="mt-24 w-72 flex-col justify-start">
+      <div className="mt-20 w-52 flex-col justify-start">
         <div className="space-y-6">
           <Button
             onClick={() => navigate("/")}

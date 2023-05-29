@@ -300,3 +300,18 @@ export interface Store {
   id: number;
   store: Genre;
 }
+
+export interface Root {
+  count: number;
+  next: string;
+  previous: any;
+  results: Result[];
+}
+
+export interface Result {
+  id: number;
+  image: string;
+  width: number;
+  height: number;
+  is_deleted: boolean;
+}

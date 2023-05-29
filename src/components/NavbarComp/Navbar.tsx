@@ -22,12 +22,12 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="mt-7 flex w-full items-center">
+    <div className="mt-7 flex items-center">
       <div className="mr-12 flex shrink-0 items-center gap-1 text-xl font-bold uppercase text-brand-white 2xl:text-2xl">
         <h1>rawg</h1>
       </div>
 
-      <div className="rounded-md bg-brand-white px-3 py-0.5 font-light text-brand-black">
+      <div className="hidden rounded-md bg-brand-white px-3 py-0.5 font-light text-brand-black lg:block">
         <h5>RateTopGames</h5>
       </div>
 
@@ -63,18 +63,22 @@ const Navbar = () => {
             }}
           />
         </form>
-        <div className="absolute right-20 flex h-5 w-5 items-center gap-2 text-sm font-thin duration-1000 ease-in-out group-hover:hidden">
-          <div className="rounded-sm px-1 text-brand-light-gray ring-1 ring-brand-light-gray ">
-            <h6>alt</h6>
-          </div>
-          <span className="text-brand-light-gray">+</span>
-          <div className="rounded-sm px-1 text-brand-light-gray ring-1 ring-brand-light-gray">
-            <h6>enter</h6>
+        <div className="absolute right-20 hidden h-5 w-5 text-sm font-thin duration-1000 ease-in-out group-hover:hidden sm:block">
+          <div className="flex items-center gap-2">
+            <div className="rounded-sm px-1 text-brand-light-gray ring-1 ring-brand-light-gray ">
+              <h6>alt</h6>
+            </div>
+            <span className="text-brand-light-gray">+</span>
+            <div className="rounded-sm px-1 text-brand-light-gray ring-1 ring-brand-light-gray">
+              <h6>enter</h6>
+            </div>
           </div>
         </div>
       </div>
 
-      <NavItems />
+      <div className="hidden lg:flex">
+        <NavItems />
+      </div>
     </div>
   );
 };
