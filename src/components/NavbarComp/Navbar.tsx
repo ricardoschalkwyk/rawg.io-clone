@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <div className="mt-7 flex items-center">
       <div className="mr-12 flex shrink-0 items-center gap-1 text-xl font-bold uppercase text-brand-white 2xl:text-2xl">
-        <h1>rawg</h1>
+        <a href="/">r a w g</a>
       </div>
 
       <div className="hidden rounded-md bg-brand-white px-3 py-0.5 font-light text-brand-black lg:block">

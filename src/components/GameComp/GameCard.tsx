@@ -63,7 +63,7 @@ const GameCard = ({ game }: GameDefaults) => {
           setHover(false);
         }}
         style={{ position: hover ? "absolute" : "static" }}
-        className="z-0 w-full rounded-md bg-brand-dark transition-transform duration-200 ease-in-out group-hover:z-10 group-hover:scale-105"
+        className="z-0 w-full rounded-xl bg-brand-dark transition-transform duration-200 ease-in-out group-hover:z-10 group-hover:scale-105"
       >
         <div>
           {/* Game image */}

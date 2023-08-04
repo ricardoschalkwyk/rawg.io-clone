@@ -25,7 +25,7 @@ const Platforms = () => {
         >
           <Icon
             icon={item.icon}
-            className="h-8 w-8 rounded-md bg-brand-gray p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray"
+            className="h-8 w-8 rounded-md bg-brand-side-dark p-1 duration-200 ease-in-out group-hover:bg-brand-white group-hover:text-brand-gray"
           />
           <div>{item.name}</div>
         </NavLink>
@@ -33,7 +33,7 @@ const Platforms = () => {
       <Button className="className=text-md group flex w-full items-center gap-2 border-solid font-thin">
         <Icon
           icon={ChevronDownIcon}
-          className="h-8 w-8 rounded-md bg-brand-gray/70 p-1 text-brand-light-text-gray duration-200 ease-in-out group-hover:bg-brand-light-text-gray group-hover:text-brand-dark"
+          className="h-8 w-8 rounded-md bg-brand-side-dark p-1 text-brand-light-text-gray duration-200 ease-in-out group-hover:bg-brand-light-text-gray group-hover:text-brand-dark"
         />
         <div className="text-brand-light-text-gray">Show All</div>
       </Button>

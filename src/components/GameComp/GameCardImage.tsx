@@ -18,9 +18,9 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
   };
 
   return (
-    <div className="relative flex max-h-36 justify-center rounded-t-md bg-brand-dark text-brand-black 2xl:max-h-64">
+    <div className="relative flex max-h-36 justify-center rounded-t-xl bg-brand-dark text-brand-black 2xl:max-h-64">
       <div
-        className="min-h-[150px] w-full rounded-t-md bg-cover bg-center 2xl:min-h-[240px]"
+        className="min-h-[150px] w-full rounded-t-xl bg-cover bg-center 2xl:min-h-[240px]"
         style={{
           backgroundImage: `url(${getCropUrl(game?.background_image)})`,
         }}

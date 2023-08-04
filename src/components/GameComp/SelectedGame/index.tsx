@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { shallowEqual, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 import Api from "../../../api";
@@ -53,12 +53,12 @@ const GameSelected = () => {
   }
 
   return (
-    <div className=" mt-6 flex gap-12">
+    <div className="flex gap-12">
       <div>
         <GameDetails game={game} />
       </div>
-      <div>
-        <GameScreenshots />
+      <div className="mr-20">
+        <GameScreenshots screenShot={screenShot} />
       </div>
     </div>
   );

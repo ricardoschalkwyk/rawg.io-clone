@@ -13,13 +13,67 @@ type Props = {
   game?: GameDetail;
 };
 
+const gameInfo = [
+  {
+    id: "1",
+    title: "Platform",
+    text: "Nintendo Switch",
+  },
+  {
+    id: "2",
+    title: "Genre",
+    text: "Action, Adventure",
+  },
+  {
+    id: "3",
+    title: "Developer",
+    text: "Nintendo",
+  },
+  {
+    id: "4",
+    title: "Metascore",
+    text: "96",
+  },
+  {
+    id: "5",
+    title: "Age rating",
+    text: "10+ Everyone 10+",
+  },
+  {
+    id: "6",
+    title: "Release date",
+    text: "May 12, 2023",
+  },
+  {
+    id: "7",
+    title: "Publisher",
+    text: "Nintendo",
+  },
+
+  {
+    id: "8",
+    other: [
+      {
+        id: "20",
+        title: "Similair games",
+        text: "Zelda's Adventure, Cadence of Hyrule, The Legend of Zelda: Breath of the Wild, Hyrule Warriors Legends, The Legend of Zelda: Tri Force Heroes, Hyrule Warriors, The Legend of Zelda: A Link Between Worlds, The Legend of Zelda: Skyward Sword, The Legend Of Zelda: Four Swords Anniversary Edition, The Legend of Zelda: Spirit Tracks, The Legend of Zelda: Phantom Hourglass, The Legend of Zelda: Twilight Princess, The Legend of Zelda: The Minish Cap, The Legend of Zelda: Four Swords Adventures, The Legend of Zelda: The Wind Waker, The Legend of Zelda: Four Swords, The Legend of Zelda: Oracle of Ages, The Legend of Zelda: Oracle of Seasons, The Legend of Zelda: Majora's Mask, The Legend of Zelda: Ocarina of Time, Zelda's Adventure (1995), Link: The Faces of Evil, The Legend of Zelda: Link's Awakening (1993), The Legend of Zelda: A Link to the Past, Zelda II: The Adventure of Link, The Legend of Zelda",
+      },
+      {
+        id: "19",
+        title: "Tags",
+        text: "Singleplayer, RPG, Open World, Sandbox, exclusive, Single player only, zelda",
+      },
+    ],
+  },
+];
+
 const GameDetails = ({ game }: Props) => {
   if (!game) {
     return null;
   }
 
   return (
-    <div>
+    <div className="ml-28">
       <div className="mt-8 flex">
         <div className="text-xs font-light uppercase text-brand-light-gray">
           Home / Games / Game Name
@@ -80,7 +134,7 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       {/* Ratings */}
-      <div className="divide mt-6 flex items-center gap-2 divide-x-2 divide-brand-light-gray">
+      <div className="mt-6 flex items-center gap-2 divide-x-2 divide-brand-light-gray">
         {/* Recommendation */}
         <div className="flex flex-col pr-10">
           <h1 className="text-2xl font-bold">Recommended</h1>
@@ -107,9 +161,9 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       {/* Color ratings */}
-      <div className="mt-10 flex flex-col justify-between 2xl:pr-96">
+      <div className="mt-10 flex flex-col 2xl:pr-96">
         {/* Colour blocks */}
-        <div className="flex w-full rounded-md">
+        <div className="flex rounded-md">
           <div className="w-full rounded-l-md bg-gradient-to-b from-rating-green-light to-rating-green-dark py-3 hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]">
             green
           </div>
@@ -161,7 +215,36 @@ const GameDetails = ({ game }: Props) => {
       {/* About */}
       <div className="mt-10 flex flex-col gap-5">
         <h1 className="text-xl font-bold">About</h1>
-        <p className="2xl:pr-96">{game.description_raw}</p>
+        <p className="font-thin 2xl:pr-96">{game.description_raw}</p>
+      </div>
+
+      {/* Game info */}
+      <div className="mt-10">
+        <div className="w-full">
+          <div className="flex flex-wrap items-center gap-5">
+            {gameInfo.map((item) => (
+              <>
+                <div key={item.id}>
+                  <h1 className="text-base text-brand-gray">{item.title}</h1>
+                  <p className="underline underline-offset-1">{item.text}</p>
+                </div>
+
+                <div className="space-y-2">
+                  {item.other?.map((item) => (
+                    <div key={item.id}>
+                      <h1 className="text-base text-brand-gray">
+                        {item.title}
+                      </h1>
+                      <p className="underline underline-offset-1">
+                        {item.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -16,50 +16,48 @@ const SideBar = () => {
         <div className="space-y-6">
           <Button
             onClick={() => navigate("/")}
-            className="text-2xl font-semibold 2xl:text-4xl"
+            className="text-2xl font-medium 2xl:text-4xl"
           >
             Home
           </Button>
-          <div className="text-2xl font-semibold 2xl:text-4xl">Reviews</div>
+          <div className="text-2xl font-medium 2xl:text-4xl">Reviews</div>
         </div>
 
         <div className="mt-6">
-          <div className="text-2xl font-semibold 2xl:text-4xl">
-            New Releases
-          </div>
-          <div className="mt-2">
+          <div className="text-2xl font-medium 2xl:text-4xl">New Releases</div>
+          <div className="mt-3">
             <NewReleases />
           </div>
         </div>
 
-        <div className="mt-4">
-          <div className="text-2xl font-semibold 2xl:text-4xl">Top</div>
-          <div className="mt-2">
+        <div className="mt-6">
+          <div className="text-2xl font-medium 2xl:text-4xl">Top</div>
+          <div className="mt-3">
             <Top />
           </div>
         </div>
 
-        <div className="mt-4">
-          <div className="text-2xl font-semibold 2xl:text-4xl">All Games</div>
+        <div className="mt-6">
+          <div className="text-2xl font-medium 2xl:text-4xl">All Games</div>
         </div>
 
-        <div className="mt-4">
-          <div className="text-2xl font-semibold 2xl:text-4xl">Browse</div>
-          <div className="mt-2">
+        <div className="mt-6">
+          <div className="text-2xl font-medium 2xl:text-4xl">Browse</div>
+          <div className="mt-3">
             <Browse />
           </div>
         </div>
 
-        <div className="mt-4">
-          <div className="text-2xl font-semibold 2xl:text-4xl">Platforms</div>
-          <div className="mt-2">
+        <div className="mt-6">
+          <div className="text-2xl font-medium 2xl:text-4xl">Platforms</div>
+          <div className="mt-3">
             <Platforms />
           </div>
         </div>
 
-        <div className="mt-4">
-          <div className="text-2xl font-semibold 2xl:text-4xl">Genre</div>
-          <div className="mt-2">
+        <div className="mt-6">
+          <div className="text-2xl font-medium 2xl:text-4xl">Genre</div>
+          <div className="mt-3">
             <Genre />
           </div>
         </div>

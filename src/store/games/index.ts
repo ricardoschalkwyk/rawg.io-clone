@@ -5,7 +5,7 @@ interface GameState {
   data: Game[];
   count: number;
   gameData?: GameDetail | null;
-  screenshots: Root[];
+  screenshots?: Root[];
   columns: Columns[];
   button: boolean;
 }
