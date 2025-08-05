@@ -21,26 +21,40 @@ type Props = {
 const NewReleases = () => {
   const dispatch = useDispatch();
 
-  const Date = moment().subtract(20, "days").calendar().toString();
-  const dateFormat = moment(Date).format("YYYY-MM-d");
+  const currentYear = moment().year();
+  const currentMonth = moment().month() + 1;
 
-  console.log(dateFormat);
   const Options: Props[] = [
-    { name: "Last 30 days", icon: StarIcon, query: dateFormat },
-    { name: "This week", icon: FireIcon, query: "ebeans" },
-    { name: "Next week", icon: ForwardIcon, query: "ebeans" },
-    { name: "Release calender", icon: CalendarIcon, query: "ebeans" },
+    {
+      name: "Last 30 days",
+      icon: StarIcon,
+      query: "lists/recent-games-past?ordering=-added",
+    },
+    {
+      name: "This week",
+      icon: FireIcon,
+      query: "lists/recent-games?ordering=-added",
+    },
+    {
+      name: "Next week",
+      icon: ForwardIcon,
+      query: "lists/recent-games-future?ordering=-added",
+    },
+    {
+      name: "Release calender",
+      icon: CalendarIcon,
+      query: `calendar/${currentYear}/${currentMonth}?ordering=released`,
+    },
   ];
 
-  const handleDates = async (option: Props) => {
+  const handleDates = async (item: Props) => {
     try {
       // Get input for the search
       const { results, count } = await Api.get<GetResult>(
-        `/games?page=1&page_size=300&ordering=${option}`
+        `/games/${item.query}&page=1&page_size=300&`
       );
 
       dispatch(setGames({ results, count }));
-      console.log("🚀 ~ getGames ~ results", results);
     } catch (error) {
       alert("Item not found");
     }
@@ -53,7 +67,7 @@ const NewReleases = () => {
           to={""}
           key={index}
           className="group flex w-full items-center gap-2 border-solid text-lg font-thin 2xl:text-2xl"
-          onClick={() => handleDates(item.query)}
+          onClick={() => handleDates(item)}
         >
           <Icon
             icon={item.icon}
