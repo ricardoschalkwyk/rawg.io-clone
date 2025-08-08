@@ -176,35 +176,33 @@ const PlatformsFilterDiv = () => {
 
   return (
     <>
-      <div>
-        <Button
-          onClick={() => {
-            setShowPlatforms(true);
-          }}
-          className="flex items-center space-x-9 rounded-md bg-brand-dark py-2 px-4 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray"
-        >
-          <div className="flex items-center gap-4 font-light 2xl:text-lg">
-            <span className="font-normal">{platformsValue}</span>
-          </div>
-          <span className="text-brand-light-gray">
-            <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
-          </span>
-        </Button>
+      <Button
+        onClick={() => {
+          setShowPlatforms(true);
+        }}
+        className="flex items-center space-x-9 rounded-md bg-brand-dark py-2 px-4 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray"
+      >
+        <div className="flex items-center gap-4 font-light 2xl:text-lg">
+          <span className="font-normal">{platformsValue}</span>
+        </div>
+        <span className="text-brand-light-gray">
+          <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+        </span>
+      </Button>
 
-        {showPlatforms && (
-          <div className="absolute top-64 z-20">
-            <Platforms
-              onClick={(option) => {
-                handleClick(option);
-                handlePlatform(option);
-                setPlatformsValue(option.platformName);
-                setShowPlatforms(false);
-              }}
-              platform={options}
-            />
-          </div>
-        )}
-      </div>
+      {showPlatforms && (
+        <div className="absolute top-64 z-20">
+          <Platforms
+            onClick={(option) => {
+              handleClick(option);
+              handlePlatform(option);
+              setPlatformsValue(option.platformName);
+              setShowPlatforms(false);
+            }}
+            platform={options}
+          />
+        </div>
+      )}
     </>
   );
 };

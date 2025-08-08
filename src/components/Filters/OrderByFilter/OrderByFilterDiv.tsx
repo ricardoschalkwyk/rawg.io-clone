@@ -101,36 +101,35 @@ const OrderByFilterDiv = () => {
 
   return (
     <>
-      <div>
-        <Button
-          onClick={() => {
-            setShowOrderBy(true);
-          }}
-          className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray lg:space-x-3"
-        >
-          <div className="flex items-center gap-5 font-light md:gap-3 2xl:text-lg">
-            <h1 className="shrink-0">Order by :</h1>
-            <span className="font-normal">{orderValue}</span>
-          </div>
-          <span className="text-brand-light-gray">
-            <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
-          </span>
-        </Button>
+      <Button
+        onClick={() => {
+          setShowOrderBy(true);
+        }}
+        className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray lg:space-x-3"
+      >
+        <div className="flex items-center gap-5 font-light md:gap-3 2xl:text-lg">
+          <h1 className="shrink-0">Order by :</h1>
+          <span className="font-normal">{orderValue}</span>
+        </div>
 
-        {showOrderBy && (
-          <div className="absolute top-64 z-20">
-            <OrderBy
-              order={options}
-              onClick={(option) => {
-                handleClick(option);
-                handleOrder(option.query);
-                setOrderValue(option.orderName);
-                setShowOrderBy(false);
-              }}
-            />
-          </div>
-        )}
-      </div>
+        <span className="text-brand-light-gray">
+          <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+        </span>
+      </Button>
+
+      {showOrderBy && (
+        <div className="absolute top-64 z-20">
+          <OrderBy
+            order={options}
+            onClick={(option) => {
+              handleClick(option);
+              handleOrder(option.query);
+              setOrderValue(option.orderName);
+              setShowOrderBy(false);
+            }}
+          />
+        </div>
+      )}
     </>
   );
 };

@@ -73,7 +73,7 @@ const GameDetails = ({ game }: Props) => {
   }
 
   return (
-    <div className="ml-28">
+    <div>
       <div className="mt-8 flex">
         <div className="text-xs font-light uppercase text-brand-light-gray">
           Home / Games / Game Name

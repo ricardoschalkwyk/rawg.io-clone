@@ -5,14 +5,12 @@ const FilterDiv = () => {
   return (
     <>
       {/* Order */}
-      <div>
-        <OrderByFilterDiv />
-      </div>
+
+      <OrderByFilterDiv />
 
       {/* Platforms */}
-      <div>
-        <PlatformsFilterDiv />
-      </div>
+
+      <PlatformsFilterDiv />
     </>
   );
 };

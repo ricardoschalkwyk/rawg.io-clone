@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { HTMLInputTypeAttribute } from "react";
 
 interface Props {
+  id: string;
   className?: string;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const Input = ({
+  id,
   className = "",
   type = "text",
   placeholder = "",
@@ -18,6 +20,7 @@ const Input = ({
 }: Props): JSX.Element => {
   return (
     <input
+      id={id}
       type={type}
       placeholder={placeholder}
       onChange={(event) => onChange(event.target.value)}

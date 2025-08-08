@@ -5,15 +5,14 @@ import SideBar from "./SideBarComp/SideBar";
 
 function Layout() {
   return (
-    <div className="px-10">
-      <div>
-        <Navbar />
-      </div>
+    <div className="container mx-auto sm:px-10">
+      <Navbar />
 
       <div className="flex 2xl:gap-12">
         <div className="hidden lg:block">
           <SideBar />
         </div>
+
         <div className="px-2 lg:px-0">
           <Outlet />
         </div>

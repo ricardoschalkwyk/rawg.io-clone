@@ -22,8 +22,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="mt-7 flex items-center">
-      <div className="mr-12 flex shrink-0 items-center gap-1 text-xl font-bold uppercase text-brand-white 2xl:text-2xl">
+    <div className="mt-7 flex items-center justify-between">
+      <div className="flex shrink-0 items-center gap-1 pl-2 text-xl font-bold uppercase text-brand-white lg:mr-12 2xl:text-2xl">
         <a href="/">r a w g</a>
       </div>
 
@@ -32,7 +32,7 @@ const Navbar = () => {
       </div>
 
       {/* Search bar */}
-      <div className="group relative mx-6 flex w-full items-center gap-2">
+      <div className="group relative mx-6 flex w-56 items-center gap-2 md:w-full md:max-w-sm xl:max-w-2xl">
         <MagnifyingGlassIcon className="absolute left-3 h-4 w-4 font-bold group-focus-within:text-brand-black group-hover:text-brand-black 2xl:h-6 2xl:w-6" />
         <form
           className="w-full"
@@ -54,15 +54,17 @@ const Navbar = () => {
           }}
         >
           <Input
-            className="w-full appearance-none rounded-full bg-brand-gray px-10 py-3 text-sm font-light text-brand-light-gray outline-none transition duration-150 ease-in-out focus:bg-brand-white group-hover:bg-brand-white group-hover:text-brand-black 2xl:py-4 2xl:text-lg"
+            id="search"
             type="text"
             placeholder={`Search ${format} games`}
+            className="w-full appearance-none rounded-full bg-brand-gray px-10 py-1.5 text-sm font-light text-brand-light-gray outline-none transition duration-150 ease-in-out focus:bg-brand-white group-hover:bg-brand-white group-hover:text-brand-black lg:py-2 2xl:py-3 2xl:text-lg"
             value={userInput}
             onChange={(e) => {
               setUserInput(e);
             }}
           />
         </form>
+
         <div className="absolute right-20 hidden h-5 w-5 text-sm font-thin duration-1000 ease-in-out group-hover:hidden sm:block">
           <div className="flex items-center gap-2">
             <div className="rounded-sm px-1 text-brand-light-gray ring-1 ring-brand-light-gray ">

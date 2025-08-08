@@ -53,11 +53,12 @@ const GameSelected = () => {
   }
 
   return (
-    <div className="flex gap-12">
+    <div className="flex flex-col gap-12 xl:flex-row">
       <div>
         <GameDetails game={game} />
       </div>
-      <div className="mr-20">
+
+      <div>
         <GameScreenshots screenShot={screenShot} />
       </div>
     </div>

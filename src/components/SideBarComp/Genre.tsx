@@ -26,7 +26,7 @@ const Genre = () => {
         <NavLink
           to={""}
           key={index}
-          className="text-md group flex w-full items-center gap-2 border-solid font-thin 2xl:text-2xl"
+          className="text-md group flex w-full items-center gap-2 border-solid font-thin"
         >
           <Icon
             icon={item.icon}
