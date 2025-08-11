@@ -5,7 +5,7 @@ import SideBar from "./SideBarComp/SideBar";
 
 function Layout() {
   return (
-    <div className="container mx-auto sm:px-10">
+    <div className="container mx-auto mb-20 sm:px-10">
       <Navbar />
 
       <div className="flex 2xl:gap-12">
