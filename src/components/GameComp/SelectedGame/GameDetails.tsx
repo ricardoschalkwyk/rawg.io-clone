@@ -8,64 +8,12 @@ import {
 
 import Button from "../../Button";
 import { GameDetail } from "../../../types";
+import clsx from "clsx";
+import NavLink from "../../NavLink";
 
 type Props = {
   game?: GameDetail;
 };
-
-const gameInfo = [
-  {
-    id: "1",
-    title: "Platform",
-    text: "Nintendo Switch",
-  },
-  {
-    id: "2",
-    title: "Genre",
-    text: "Action, Adventure",
-  },
-  {
-    id: "3",
-    title: "Developer",
-    text: "Nintendo",
-  },
-  {
-    id: "4",
-    title: "Metascore",
-    text: "96",
-  },
-  {
-    id: "5",
-    title: "Age rating",
-    text: "10+ Everyone 10+",
-  },
-  {
-    id: "6",
-    title: "Release date",
-    text: "May 12, 2023",
-  },
-  {
-    id: "7",
-    title: "Publisher",
-    text: "Nintendo",
-  },
-
-  {
-    id: "8",
-    other: [
-      {
-        id: "20",
-        title: "Similair games",
-        text: "Zelda's Adventure, Cadence of Hyrule, The Legend of Zelda: Breath of the Wild, Hyrule Warriors Legends, The Legend of Zelda: Tri Force Heroes, Hyrule Warriors, The Legend of Zelda: A Link Between Worlds, The Legend of Zelda: Skyward Sword, The Legend Of Zelda: Four Swords Anniversary Edition, The Legend of Zelda: Spirit Tracks, The Legend of Zelda: Phantom Hourglass, The Legend of Zelda: Twilight Princess, The Legend of Zelda: The Minish Cap, The Legend of Zelda: Four Swords Adventures, The Legend of Zelda: The Wind Waker, The Legend of Zelda: Four Swords, The Legend of Zelda: Oracle of Ages, The Legend of Zelda: Oracle of Seasons, The Legend of Zelda: Majora's Mask, The Legend of Zelda: Ocarina of Time, Zelda's Adventure (1995), Link: The Faces of Evil, The Legend of Zelda: Link's Awakening (1993), The Legend of Zelda: A Link to the Past, Zelda II: The Adventure of Link, The Legend of Zelda",
-      },
-      {
-        id: "19",
-        title: "Tags",
-        text: "Singleplayer, RPG, Open World, Sandbox, exclusive, Single player only, zelda",
-      },
-    ],
-  },
-];
 
 const GameDetails = ({ game }: Props) => {
   if (!game) {
@@ -164,38 +112,36 @@ const GameDetails = ({ game }: Props) => {
       <div className="mt-10 flex flex-col 2xl:pr-96">
         {/* Colour blocks */}
         <div className="flex rounded-md">
-          <div className="w-full rounded-l-md bg-gradient-to-b from-rating-green-light to-rating-green-dark py-3 hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]">
-            green
-          </div>
-          <div className="w-full bg-gradient-to-b from-rating-blue-light to-rating-blue-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]">
-            blue
-          </div>
-          <div className="w-full bg-gradient-to-b from-rating-orange-light to-rating-orange-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]">
-            orange
-          </div>
-          <div className="w-full rounded-r-md bg-gradient-to-b from-rating-red-light to-rating-red-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]">
-            red
-          </div>
+          <div className="w-full max-w-xs rounded-l-md bg-gradient-to-b from-rating-green-light to-rating-green-dark py-7 hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
+          <div className="w-full max-w-xs bg-gradient-to-b from-rating-blue-light to-rating-blue-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
+          <div className="w-full max-w-xs bg-gradient-to-b from-rating-orange-light to-rating-orange-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
+          <div className="w-full max-w-xs rounded-r-md bg-gradient-to-b from-rating-red-light to-rating-red-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
         </div>
 
         {/* Click colour rating */}
-        <div className="mt-6 flex items-center gap-4">
-          <div className="flex gap-2 rounded-full px-4 py-1 ring-brand-light-gray hover:ring-2">
-            <StopIcon className="w-4 text-green-400" />
-            <span>Exceptional</span>
-          </div>
-          <div className="flex gap-2 rounded-full px-4 py-1 ring-brand-light-gray hover:ring-2">
-            <StopIcon className="w-4 text-blue-400" />
-            <span>Recommended</span>
-          </div>
-          <div className="flex gap-2 rounded-full px-4 py-1 ring-brand-light-gray hover:ring-2">
-            <StopIcon className="w-4 text-orange-400" />
-            <span>Meh</span>
-          </div>
-          <div className="flex gap-2 rounded-full px-4 py-1 ring-brand-light-gray hover:ring-2">
-            <StopIcon className="w-4 text-red-400" />
-            <span>Skip</span>
-          </div>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          {game.ratings.map((item) => {
+            return (
+              <div key={item.id} className="flex items-center gap-2 text-sm">
+                <StopIcon
+                  className={clsx(
+                    "w-4",
+                    item.title === "exceptional"
+                      ? "text-green-400"
+                      : item.title === "recommended"
+                      ? "text-blue-400"
+                      : item.title === "meh"
+                      ? "text-orange-400"
+                      : item.title === "skip"
+                      ? "text-red-400"
+                      : ""
+                  )}
+                />
+                <span className="font-bold capitalize">{item.title}</span>
+                <span className="text-white/40">{item.count}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -203,7 +149,7 @@ const GameDetails = ({ game }: Props) => {
       <div className="mt-8 flex items-center gap-5">
         <div className="flex items-center gap-3 rounded-md bg-brand-gray py-3 px-6 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
           <PlusIcon className="w-6 font-bold" />
-          <span>Write a review 97</span>
+          <span>Write a review {game.reviews_count}</span>
         </div>
 
         <div className="flex items-center gap-3 rounded-md bg-brand-gray py-3 px-6 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
@@ -220,30 +166,110 @@ const GameDetails = ({ game }: Props) => {
 
       {/* Game info */}
       <div className="mt-10">
-        <div className="w-full">
-          <div className="flex flex-wrap items-center gap-5">
-            {gameInfo.map((item) => (
-              <>
-                <div key={item.id}>
-                  <h1 className="text-base text-brand-gray">{item.title}</h1>
-                  <p className="underline underline-offset-1">{item.text}</p>
-                </div>
+        <div className="grid w-full grid-cols-2">
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">
+              Platforms
+            </h1>
+            <div className="flex flex-wrap gap-1">
+              {game.platforms.map((item) => (
+                <p
+                  key={item.platform.id}
+                  className="text-sm underline underline-offset-1"
+                >
+                  {item.platform.name},
+                </p>
+              ))}
+            </div>
+          </div>
 
-                <div className="space-y-2">
-                  {item.other?.map((item) => (
-                    <div key={item.id}>
-                      <h1 className="text-base text-brand-gray">
-                        {item.title}
-                      </h1>
-                      <p className="underline underline-offset-1">
-                        {item.text}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </>
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">
+              Metascore
+            </h1>
+            <p className="text-sm text-green-400">{game.metacritic}</p>
+          </div>
+
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">Genres</h1>
+            <div className="flex flex-wrap gap-1">
+              {game.genres.map((item) => (
+                <p
+                  key={item.id}
+                  className="text-sm underline underline-offset-1"
+                >
+                  {item.name},
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">
+              Release date
+            </h1>
+            <p className="text-sm">{game.released}</p>
+          </div>
+
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">
+              Developer
+            </h1>
+            <div className="flex flex-wrap gap-1">
+              {game.developers.map((item) => (
+                <p
+                  key={item.id}
+                  className="text-sm underline underline-offset-1"
+                >
+                  {item.name},
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">
+              Publisher
+            </h1>
+            <div className="flex flex-wrap gap-1">
+              {game.publishers.map((item) => (
+                <p
+                  key={item.id}
+                  className="text-sm underline underline-offset-1"
+                >
+                  {item.name},
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">
+              Age rating
+            </h1>
+            <p className="text-sm">{game.esrb_rating.name}</p>
+          </div>
+        </div>
+
+        <div>
+          <h1 className="my-2 text-sm font-medium text-white/30">Tags</h1>
+          <div className="flex flex-wrap gap-1">
+            {game.tags.map((item) => (
+              <p key={item.id} className="text-sm underline underline-offset-1">
+                {item.name},
+              </p>
             ))}
           </div>
+        </div>
+
+        <div>
+          <h1 className="my-2 text-sm font-medium text-white/30">Website</h1>
+          <NavLink
+            to={game.website}
+            className="text-sm underline underline-offset-1"
+          >
+            {game.website}
+          </NavLink>
         </div>
       </div>
     </div>
