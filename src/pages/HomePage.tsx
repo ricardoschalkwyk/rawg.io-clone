@@ -39,7 +39,7 @@ const HomePage = () => {
   return (
     <div>
       <div className="mt-10 text-center md:text-start">
-        <div className="text-4xl font-bold md:text-7xl">New and trending</div>
+        <div className="text-4xl font-bold xl:text-5xl">New and trending</div>
         <div className="mt-2">Based on player count and release date</div>
       </div>
 

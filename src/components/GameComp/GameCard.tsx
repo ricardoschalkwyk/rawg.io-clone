@@ -150,6 +150,7 @@ const GameCard = ({ game }: GameDefaults) => {
             {/* Game title */}
             <div className="mb-2 flex justify-self-start pt-2 text-2xl font-bold uppercase">
               <Button
+                className="duration-200 hover:text-white/40"
                 onClick={() => {
                   navigate(`/game/${game.id}`);
                 }}
