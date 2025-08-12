@@ -61,7 +61,7 @@ const GameDetails = ({ game }: Props) => {
         </Button>
 
         {/* Add To Wishlist */}
-        <Button className="rounded-md border-2 border-zinc-100 py-1 px-3 text-brand-dark duration-300 hover:border-brand-light-gray">
+        <Button className="rounded-md border-2 border-zinc-100 px-3 py-1 text-brand-dark duration-300 hover:border-brand-light-gray">
           <span className="flex justify-start text-xs text-brand-light-gray">
             Add to
           </span>
@@ -71,7 +71,7 @@ const GameDetails = ({ game }: Props) => {
         </Button>
 
         {/* Save To Collection */}
-        <Button className="rounded-md border-2 border-zinc-100 py-1 px-3 text-brand-dark duration-300 hover:border-brand-light-gray">
+        <Button className="rounded-md border-2 border-zinc-100 px-3 py-1 text-brand-dark duration-300 hover:border-brand-light-gray">
           <span className="flex justify-start text-xs text-brand-light-gray">
             Save to
           </span>
@@ -87,7 +87,7 @@ const GameDetails = ({ game }: Props) => {
         <div className="flex flex-col pr-10">
           <h1 className="text-2xl font-bold">Recommended</h1>
           <span className="text-sm font-light text-brand-light-gray underline underline-offset-auto transition-all duration-200 hover:text-gray-200">
-            000 Ratings
+            {game.ratings_count} Ratings
           </span>
         </div>
 
@@ -147,12 +147,12 @@ const GameDetails = ({ game }: Props) => {
 
       {/* Commenting */}
       <div className="mt-8 flex items-center gap-5">
-        <div className="flex items-center gap-3 rounded-md bg-brand-gray py-3 px-6 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
+        <div className="flex items-center gap-3 rounded-md bg-brand-gray px-6 py-3 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
           <PlusIcon className="w-6 font-bold" />
           <span>Write a review {game.reviews_count}</span>
         </div>
 
-        <div className="flex items-center gap-3 rounded-md bg-brand-gray py-3 px-6 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
+        <div className="flex items-center gap-3 rounded-md bg-brand-gray px-6 py-3 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
           <ChatBubbleOvalLeftIcon className="w-6" />
           <span>Write a comment</span>
         </div>
@@ -247,7 +247,9 @@ const GameDetails = ({ game }: Props) => {
             <h1 className="my-2 text-sm font-medium text-white/30">
               Age rating
             </h1>
-            <p className="text-sm">{game.esrb_rating.name}</p>
+            <p className="text-sm">
+              {game.esrb_rating ? game.esrb_rating?.name : "Not rated"}
+            </p>
           </div>
         </div>
 
