@@ -183,12 +183,14 @@ const GameDetails = ({ game }: Props) => {
             </div>
           </div>
 
-          <div>
-            <h1 className="my-2 text-sm font-medium text-white/30">
-              Metascore
-            </h1>
-            <p className="text-sm text-green-400">{game.metacritic}</p>
-          </div>
+          {game.metacritic ? (
+            <div>
+              <h1 className="my-2 text-sm font-medium text-white/30">
+                Metascore
+              </h1>
+              <p className="text-sm text-green-400">{game.metacritic}</p>
+            </div>
+          ) : null}
 
           <div>
             <h1 className="my-2 text-sm font-medium text-white/30">Genres</h1>
@@ -255,6 +257,7 @@ const GameDetails = ({ game }: Props) => {
 
         <div>
           <h1 className="my-2 text-sm font-medium text-white/30">Tags</h1>
+
           <div className="flex flex-wrap gap-1">
             {game.tags.map((item) => (
               <p key={item.id} className="text-sm underline underline-offset-1">
@@ -264,15 +267,18 @@ const GameDetails = ({ game }: Props) => {
           </div>
         </div>
 
-        <div>
-          <h1 className="my-2 text-sm font-medium text-white/30">Website</h1>
-          <NavLink
-            to={game.website}
-            className="text-sm underline underline-offset-1"
-          >
-            {game.website}
-          </NavLink>
-        </div>
+        {game.website ? (
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">Website</h1>
+
+            <NavLink
+              to={game.website}
+              className="text-sm underline underline-offset-1"
+            >
+              {game.website}
+            </NavLink>
+          </div>
+        ) : null}
       </div>
     </div>
   );
