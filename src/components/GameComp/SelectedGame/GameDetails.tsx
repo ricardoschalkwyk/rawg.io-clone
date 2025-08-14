@@ -41,7 +41,7 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       <div className="mt-3">
-        <div className="text-7xl font-bold">{game.name}</div>
+        <div className="text-7xl font-bold">{game?.name}</div>
       </div>
 
       {/* My Games / wishlist / collection */}
@@ -109,7 +109,7 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       {/* Color ratings */}
-      <div className="mt-10 flex flex-col 2xl:pr-96">
+      <div className="mt-10 flex flex-col 2xl:pr-80">
         {/* Colour blocks */}
         <div className="flex rounded-md">
           <div className="w-full max-w-xs rounded-l-md bg-gradient-to-b from-rating-green-light to-rating-green-dark py-7 hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
@@ -161,7 +161,7 @@ const GameDetails = ({ game }: Props) => {
       {/* About */}
       <div className="mt-10 flex flex-col gap-5">
         <h1 className="text-xl font-bold">About</h1>
-        <p className="font-thin 2xl:pr-96">{game.description_raw}</p>
+        <p className="font-thin 2xl:pr-44">{game.description_raw}</p>
       </div>
 
       {/* Game info */}
@@ -177,7 +177,7 @@ const GameDetails = ({ game }: Props) => {
                   key={item.platform.id}
                   className="text-sm underline underline-offset-1"
                 >
-                  {item.platform.name},
+                  {item.platform?.name},
                 </p>
               ))}
             </div>
@@ -198,7 +198,7 @@ const GameDetails = ({ game }: Props) => {
                   key={item.id}
                   className="text-sm underline underline-offset-1"
                 >
-                  {item.name},
+                  {item?.name},
                 </p>
               ))}
             </div>
@@ -221,7 +221,7 @@ const GameDetails = ({ game }: Props) => {
                   key={item.id}
                   className="text-sm underline underline-offset-1"
                 >
-                  {item.name},
+                  {item?.name},
                 </p>
               ))}
             </div>
@@ -237,7 +237,7 @@ const GameDetails = ({ game }: Props) => {
                   key={item.id}
                   className="text-sm underline underline-offset-1"
                 >
-                  {item.name},
+                  {item?.name},
                 </p>
               ))}
             </div>
@@ -258,7 +258,7 @@ const GameDetails = ({ game }: Props) => {
           <div className="flex flex-wrap gap-1">
             {game.tags.map((item) => (
               <p key={item.id} className="text-sm underline underline-offset-1">
-                {item.name},
+                {item?.name},
               </p>
             ))}
           </div>

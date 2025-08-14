@@ -175,10 +175,10 @@ const PlatformsFilterDiv = () => {
   };
 
   return (
-    <>
+    <div className="relative">
       <Button
         onClick={() => {
-          setShowPlatforms(true);
+          setShowPlatforms(!showPlatforms);
         }}
         className="flex items-center space-x-9 rounded-md bg-brand-dark py-2 px-4 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray"
       >
@@ -191,7 +191,7 @@ const PlatformsFilterDiv = () => {
       </Button>
 
       {showPlatforms && (
-        <div className="absolute top-64 z-20">
+        <div className="absolute top-10 z-20 2xl:top-12">
           <Platforms
             onClick={(option) => {
               handleClick(option);
@@ -203,7 +203,7 @@ const PlatformsFilterDiv = () => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

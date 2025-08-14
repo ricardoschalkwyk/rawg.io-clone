@@ -100,10 +100,10 @@ const OrderByFilterDiv = () => {
   };
 
   return (
-    <>
+    <div className="relative">
       <Button
         onClick={() => {
-          setShowOrderBy(true);
+          setShowOrderBy(!showOrderBy);
         }}
         className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray lg:space-x-3"
       >
@@ -118,7 +118,7 @@ const OrderByFilterDiv = () => {
       </Button>
 
       {showOrderBy && (
-        <div className="absolute top-64 z-20">
+        <div className="absolute top-10 z-20 2xl:top-12">
           <OrderBy
             order={options}
             onClick={(option) => {
@@ -130,7 +130,7 @@ const OrderByFilterDiv = () => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 
