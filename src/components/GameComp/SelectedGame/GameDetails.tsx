@@ -167,21 +167,23 @@ const GameDetails = ({ game }: Props) => {
       {/* Game info */}
       <div className="mt-10">
         <div className="grid w-full grid-cols-2">
-          <div>
-            <h1 className="my-2 text-sm font-medium text-white/30">
-              Platforms
-            </h1>
-            <div className="flex flex-wrap gap-1">
-              {game.platforms.map((item) => (
-                <p
-                  key={item.platform.id}
-                  className="text-sm underline underline-offset-1"
-                >
-                  {item.platform?.name},
-                </p>
-              ))}
+          {game.platforms.length ? (
+            <div>
+              <h1 className="my-2 text-sm font-medium text-white/30">
+                Platforms
+              </h1>
+              <div className="flex flex-wrap gap-1">
+                {game.platforms.map((item) => (
+                  <p
+                    key={item.platform.id}
+                    className="text-sm underline underline-offset-1"
+                  >
+                    {item.platform?.name},
+                  </p>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : null}
 
           {game.metacritic ? (
             <div>
@@ -192,26 +194,30 @@ const GameDetails = ({ game }: Props) => {
             </div>
           ) : null}
 
-          <div>
-            <h1 className="my-2 text-sm font-medium text-white/30">Genres</h1>
-            <div className="flex flex-wrap gap-1">
-              {game.genres.map((item) => (
-                <p
-                  key={item.id}
-                  className="text-sm underline underline-offset-1"
-                >
-                  {item?.name},
-                </p>
-              ))}
+          {game.genres.length ? (
+            <div>
+              <h1 className="my-2 text-sm font-medium text-white/30">Genres</h1>
+              <div className="flex flex-wrap gap-1">
+                {game.genres.map((item) => (
+                  <p
+                    key={item.id}
+                    className="text-sm underline underline-offset-1"
+                  >
+                    {item?.name},
+                  </p>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : null}
 
-          <div>
-            <h1 className="my-2 text-sm font-medium text-white/30">
-              Release date
-            </h1>
-            <p className="text-sm">{game.released}</p>
-          </div>
+          {game.released ? (
+            <div>
+              <h1 className="my-2 text-sm font-medium text-white/30">
+                Release date
+              </h1>
+              <p className="text-sm">{game.released}</p>
+            </div>
+          ) : null}
 
           <div>
             <h1 className="my-2 text-sm font-medium text-white/30">
@@ -255,17 +261,22 @@ const GameDetails = ({ game }: Props) => {
           </div>
         </div>
 
-        <div>
-          <h1 className="my-2 text-sm font-medium text-white/30">Tags</h1>
+        {game.tags.length ? (
+          <div>
+            <h1 className="my-2 text-sm font-medium text-white/30">Tags</h1>
 
-          <div className="flex flex-wrap gap-1">
-            {game.tags.map((item) => (
-              <p key={item.id} className="text-sm underline underline-offset-1">
-                {item?.name},
-              </p>
-            ))}
+            <div className="flex flex-wrap gap-1">
+              {game.tags.map((item) => (
+                <p
+                  key={item.id}
+                  className="text-sm underline underline-offset-1"
+                >
+                  {item?.name},
+                </p>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
 
         {game.website ? (
           <div>
