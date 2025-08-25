@@ -28,13 +28,15 @@ const GameDetails = ({ game }: Props) => {
         </div>
       </div>
 
-      <div className="mt-8 flex items-center gap-4">
-        <div className="rounded-md border-2 bg-brand-white px-2 text-xs font-thin text-brand-black">
-          {game.released}
-        </div>
+      <div className="mt-8 flex flex-col items-center gap-2 md:flex-row md:items-start">
+        <div className="flex items-center gap-2.5">
+          <div className="rounded-md border-2 bg-brand-white px-2 text-xs font-thin text-brand-black">
+            {game.released}
+          </div>
 
-        <div>
-          <h1>platforms</h1>
+          <div>
+            <h1>platforms</h1>
+          </div>
         </div>
 
         <div>
@@ -45,19 +47,20 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       <div className="mt-3">
-        <div className="text-7xl font-bold">{game?.name}</div>
+        <div className="text-3xl font-bold md:text-7xl">{game?.name}</div>
       </div>
 
       {/* My Games / wishlist / collection */}
-      <div className="mt-6 flex gap-2">
+      <div className="mt-6 flex flex-col gap-2 md:flex-row">
         {/* Add To My Games */}
-        <Button className="rounded-md border-2 bg-brand-white pl-3 pr-16 text-brand-dark">
+        <Button className="rounded-md border-2 bg-brand-white pl-3 text-brand-dark md:pr-16">
           <span className="flex justify-start text-xs text-brand-light-gray">
             Add to
           </span>
 
           <div className="flex items-center gap-3">
             <div>My games</div>
+
             <FontAwesomeIcon
               icon={faPlusCircle}
               className="h-8 w-8 text-green-500"
@@ -87,29 +90,34 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       {/* Ratings */}
-      <div className="mt-6 flex items-center gap-2 divide-x-2 divide-brand-light-gray">
+      <div className="mt-6 flex flex-col items-center justify-center gap-2 text-center md:flex-row md:justify-start md:divide-x-2 md:divide-brand-light-gray md:text-left">
         {/* Recommendation */}
-        <div className="flex flex-col pr-10">
+        <div className="flex flex-col md:pr-10">
           <h1 className="text-2xl font-bold">Recommended</h1>
+
           <span className="text-sm font-light text-brand-light-gray underline underline-offset-auto transition-all duration-200 hover:text-gray-200">
             {game.ratings_count} Ratings
           </span>
         </div>
 
-        {/* Rating In Category */}
-        <div className="flex flex-col pl-6 pr-3">
-          <span className="text-4xl font-bold">#304</span>
-          <span className="text-sm font-light uppercase text-brand-light-gray underline underline-offset-auto transition-all duration-200 hover:text-gray-200">
-            Shooter
-          </span>
-        </div>
+        <div className="flex gap-2 md:divide-x-2 md:divide-brand-light-gray">
+          {/* Rating In Category */}
+          <div className="flex flex-col pr-3 md:pl-6">
+            <span className="text-2xl font-bold">#304</span>
 
-        {/* Overall Rating */}
-        <div className="flex flex-col pl-6">
-          <span className="text-4xl font-bold">#16</span>
-          <span className="text-sm font-light uppercase text-brand-light-gray underline underline-offset-auto transition-all duration-200 hover:text-gray-200">
-            Top 2022
-          </span>
+            <span className="text-sm font-light uppercase text-brand-light-gray underline underline-offset-auto transition-all duration-200 hover:text-gray-200">
+              Shooter
+            </span>
+          </div>
+
+          {/* Overall Rating */}
+          <div className="flex flex-col md:pl-6">
+            <span className="text-2xl font-bold">#16</span>
+
+            <span className="text-sm font-light uppercase text-brand-light-gray underline underline-offset-auto transition-all duration-200 hover:text-gray-200">
+              Top 2022
+            </span>
+          </div>
         </div>
       </div>
 
