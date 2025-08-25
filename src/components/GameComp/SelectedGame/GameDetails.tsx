@@ -21,22 +21,26 @@ const GameDetails = ({ game }: Props) => {
   }
 
   return (
-    <div>
+    <>
       <div className="mt-8 flex">
         <div className="text-xs font-light uppercase text-brand-light-gray">
-          Home / Games / Game Name
+          Home / Games / {game.name}
         </div>
       </div>
 
       <div className="mt-8 flex items-center gap-4">
         <div className="rounded-md border-2 bg-brand-white px-2 text-xs font-thin text-brand-black">
-          OCT 20, 2022
+          {game.released}
         </div>
+
         <div>
           <h1>platforms</h1>
         </div>
+
         <div>
-          <span className="text-xs font-light">AVERAGE PLAYTIME: 9 HOURS</span>
+          <span className="text-xs font-light">
+            AVERAGE PLAYTIME: {game.playtime} HOURS
+          </span>
         </div>
       </div>
 
@@ -51,6 +55,7 @@ const GameDetails = ({ game }: Props) => {
           <span className="flex justify-start text-xs text-brand-light-gray">
             Add to
           </span>
+
           <div className="flex items-center gap-3">
             <div>My games</div>
             <FontAwesomeIcon
@@ -291,7 +296,7 @@ const GameDetails = ({ game }: Props) => {
           </div>
         ) : null}
       </div>
-    </div>
+    </>
   );
 };
 

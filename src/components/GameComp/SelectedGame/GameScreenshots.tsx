@@ -43,12 +43,11 @@ const contibutors = [
 ];
 
 const GameScreenshots = ({ screenShots }: Props) => {
-  console.log(screenShots?.id);
   return (
     <div className="mt-20 flex flex-col items-center justify-center">
-      <div className="relative rounded-md bg-gray-300 px-44 py-24">
+      <div className="p relative rounded-md bg-gray-300 px-36 py-16 md:px-44 md:py-24">
         <div>video 1</div>
-        <Button className="absolute right-0 bottom-0 m-3 flex items-center gap-2 rounded-sm bg-brand-dark bg-opacity-50 p-1 px-2 text-xs font-normal text-brand-white">
+        <Button className="absolute bottom-0 right-0 m-3 flex items-center gap-2 rounded-sm bg-brand-dark bg-opacity-50 p-1 px-2 text-xs font-normal text-brand-white">
           <FontAwesomeIcon
             className="h-5 w-5 text-brand-white"
             icon={faYoutube}
@@ -59,14 +58,22 @@ const GameScreenshots = ({ screenShots }: Props) => {
 
       {/* Preview Images */}
       <div className="mt-4 grid shrink-0 grid-cols-2 gap-5">
-        <div className="rounded-md bg-gray-300 px-16 py-10">image 1</div>
-        <div className="rounded-md bg-gray-300 px-16 py-10">image 2</div>
-        <div className="rounded-md bg-gray-300 px-16 py-10">image 3</div>
-        <div className="rounded-md bg-gray-300 px-16 py-10">image 4</div>
+        <div className="rounded-md bg-gray-300 px-12 py-8 md:px-16 md:py-10">
+          image 1
+        </div>
+        <div className="rounded-md bg-gray-300 px-12 py-8 md:px-16 md:py-10">
+          image 2
+        </div>
+        <div className="rounded-md bg-gray-300 px-12 py-8 md:px-16 md:py-10">
+          image 3
+        </div>
+        <div className="rounded-md bg-gray-300 px-12 py-8 md:px-16 md:py-10">
+          image 4
+        </div>
       </div>
 
       {/* Editing info */}
-      <div className="mt-4 flex w-full flex-col items-center justify-center">
+      <div className="mt-4 flex w-full max-w-80 flex-col items-center justify-center md:max-w-96">
         <Button className="flex w-full justify-center gap-2 bg-white py-4 text-brand-dark">
           <FontAwesomeIcon
             icon={faPenToSquare}
@@ -74,6 +81,7 @@ const GameScreenshots = ({ screenShots }: Props) => {
           />
           Edit the game info
         </Button>
+
         <p className="mt-2 text-sm font-thin text-brand-light-gray">
           Last Modified: Jul 9, 2023
         </p>
