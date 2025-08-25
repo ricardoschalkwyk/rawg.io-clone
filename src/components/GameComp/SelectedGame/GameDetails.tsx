@@ -159,13 +159,13 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       {/* Commenting */}
-      <div className="mt-8 flex items-center gap-5">
-        <div className="flex items-center gap-3 rounded-md bg-brand-gray px-6 py-3 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
+      <div className="mt-8 flex flex-col items-center gap-5">
+        <div className="flex w-full items-center justify-center gap-3 rounded-md bg-brand-gray px-6 py-3 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
           <PlusIcon className="w-6 font-bold" />
           <span>Write a review {game.reviews_count}</span>
         </div>
 
-        <div className="flex items-center gap-3 rounded-md bg-brand-gray px-6 py-3 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
+        <div className="flex w-full items-center justify-center gap-3 rounded-md bg-brand-gray px-6 py-3 text-brand-text-gray transition-all duration-300 hover:bg-brand-white hover:text-brand-gray">
           <ChatBubbleOvalLeftIcon className="w-6" />
           <span>Write a comment</span>
         </div>
