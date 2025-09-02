@@ -3,10 +3,10 @@ import { faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Button from "../../Button";
-import { Result } from "../../../types";
+import { Results } from "../../../types";
 
 type Props = {
-  screenShots?: Result;
+  screenShots: Results[];
 };
 
 const contibutors = [
@@ -43,10 +43,17 @@ const contibutors = [
 ];
 
 const GameScreenshots = ({ screenShots }: Props) => {
+  const firstImage = screenShots.filter((item, index) => index === 0);
+
   return (
     <div className="mt-20 flex flex-col items-center justify-center">
-      <div className="relative rounded-md bg-gray-300 px-28 py-16  md:px-40 md:py-24 lg:px-44">
-        <div>video 1</div>
+      <div className="relative">
+        {firstImage.map((item) => (
+          <div key={item.id} className="overflow-hidden rounded-md">
+            <img src={item.image} width={item.width} height={item.height} />
+          </div>
+        ))}
+
         <Button className="absolute bottom-0 right-0 m-3 flex items-center gap-2 rounded-sm bg-brand-dark bg-opacity-50 p-1 px-2 text-xs font-normal text-brand-white">
           <FontAwesomeIcon
             className="h-5 w-5 text-brand-white"
@@ -58,23 +65,16 @@ const GameScreenshots = ({ screenShots }: Props) => {
 
       {/* Preview Images */}
       <div className="mt-4 grid shrink-0 grid-cols-2 gap-2.5 md:gap-5">
-        <div className="rounded-md bg-gray-300 px-9 py-8 sm:px-12 md:px-14 md:py-10 lg:px-16">
-          image 1
-        </div>
-        <div className="rounded-md bg-gray-300 px-9 py-8 sm:px-12 md:px-14 md:py-10 lg:px-16">
-          image 2
-        </div>
-        <div className="rounded-md bg-gray-300 px-9 py-8 sm:px-12 md:px-14 md:py-10 lg:px-16">
-          image 3
-        </div>
-        <div className="rounded-md bg-gray-300 px-9 py-8 sm:px-12 md:px-14 md:py-10 lg:px-16">
-          image 4
-        </div>
+        {screenShots.map((item) => (
+          <div key={item.id} className="overflow-hidden rounded-md">
+            <img src={item.image} width={item.width} height={item.height} />
+          </div>
+        ))}
       </div>
 
       {/* Editing info */}
       <div className="mt-4 flex w-full max-w-80 flex-col items-center justify-center md:max-w-96">
-        <Button className="flex w-full justify-center gap-2 bg-white py-4 text-brand-dark">
+        <Button className="flex w-full justify-center gap-2 bg-white py-2 text-brand-dark md:py-3">
           <FontAwesomeIcon
             icon={faPenToSquare}
             className="h-5 w-5 items-center"

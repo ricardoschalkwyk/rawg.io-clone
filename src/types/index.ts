@@ -305,10 +305,10 @@ export interface Root {
   count: number;
   next: string;
   previous: any;
-  results: Result[];
+  results: Results[];
 }
 
-export interface Result {
+export interface Results {
   id: number;
   image: string;
   width: number;

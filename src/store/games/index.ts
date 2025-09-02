@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Game, GameDetail, Root } from "../../types";
+import { Game, GameDetail, Results } from "../../types";
 
 interface GameState {
   data: Game[];
   count: number;
   gameData?: GameDetail | null;
-  screenshots?: Root[];
+  screenshots?: Results[];
   columns: Columns[];
   button: boolean;
 }

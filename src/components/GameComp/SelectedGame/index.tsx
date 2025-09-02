@@ -8,7 +8,7 @@ import Api from "../../../api";
 import GameScreenshots from "./GameScreenshots";
 import GameDetails from "./GameDetails";
 
-import { GameDetail } from "../../../types";
+import { GameDetail, Root } from "../../../types";
 import { setGame, setScreenShots } from "../../../store/games";
 import { RootState } from "../../../store";
 
@@ -17,7 +17,9 @@ const GameSelected = () => {
   const { id } = useParams();
 
   const game = useSelector((state: RootState) => state.games.gameData);
-  const screenShot = useSelector((state: RootState) => state.games.screenshots);
+  const screenShots = useSelector(
+    (state: RootState) => state.games.screenshots
+  );
 
   const handleData = async () => {
     try {
@@ -32,12 +34,14 @@ const GameSelected = () => {
 
   const handleScreenshots = async () => {
     try {
-      const results = await Api.get<GameDetail>(
+      const images = await Api.get<Root>(
         `/games/${id}/screenshots?page_size=5`
       );
 
-      dispatch(setScreenShots(results));
-      console.log("🚀 ~ getGames ~ results", results);
+      console.log(images.results);
+
+      dispatch(setScreenShots(images.results));
+      console.log("🚀 ~ getGames ~ images", images);
     } catch (error) {
       alert("Item not found");
     }
@@ -53,14 +57,16 @@ const GameSelected = () => {
   }
 
   return (
-    <div className="flex flex-col gap-12 xl:flex-row">
-      <div>
+    <div className="flex flex-col items-center justify-center gap-12 xl:flex-row xl:items-start">
+      <div className="w-full">
         <GameDetails game={game} />
       </div>
 
-      <div>
-        <GameScreenshots screenShot={screenShot} />
-      </div>
+      {screenShots ? (
+        <div className="w-full max-w-sm">
+          <GameScreenshots screenShots={screenShots} />
+        </div>
+      ) : null}
     </div>
   );
 };
