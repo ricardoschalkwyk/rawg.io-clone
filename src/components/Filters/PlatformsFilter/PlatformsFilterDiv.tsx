@@ -1,15 +1,16 @@
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Menu, MenuButton, MenuItems } from "@headlessui/react";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-
-import Button from "../../Button";
-import Platforms from "../Platforms";
-import { setGames } from "../../../store/games";
-import { GetResult } from "../../../types";
+import { useParams } from "react-router-dom";
 
 import Api from "../../../api";
-import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import { setGames } from "../../../store/games";
+import { GetResult } from "../../../types";
+import Platforms from "../Platforms";
+
 interface child_query {
   id: number;
   platformName: string;
@@ -146,6 +147,8 @@ const PlatformsFilterDiv = () => {
   const [showPlatforms, setShowPlatforms] = useState(false);
   const [platformsValue, setPlatformsValue] = useState("Platforms");
   const [options, setOptions] = useState(platformsOptions);
+  const { params } = useParams();
+  console.log(params);
 
   const dispatch = useDispatch();
 
@@ -168,7 +171,6 @@ const PlatformsFilterDiv = () => {
       );
 
       dispatch(setGames({ results, count }));
-      console.log("🚀 ~ getGames ~ results", results);
     } catch (error) {
       alert("Item not found");
     }
@@ -176,22 +178,24 @@ const PlatformsFilterDiv = () => {
 
   return (
     <div className="relative">
-      <Button
-        onClick={() => {
-          setShowPlatforms(!showPlatforms);
-        }}
-        className="flex items-center space-x-9 rounded-md bg-brand-dark py-2 px-4 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray"
-      >
-        <div className="flex items-center gap-4 font-light 2xl:text-lg">
-          <span className="font-normal">{platformsValue}</span>
-        </div>
-        <span className="text-brand-light-gray">
-          <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
-        </span>
-      </Button>
+      <Menu>
+        <MenuButton className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray lg:space-x-3">
+          <div className="2xl:text-md flex items-center gap-5 font-light md:gap-3">
+            <h1 className="shrink-0">Order by :</h1>
 
-      {showPlatforms && (
-        <div className="absolute top-10 z-20 2xl:top-12">
+            <span className="font-normal">{platformsValue}</span>
+          </div>
+
+          <span className="text-brand-light-gray">
+            <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+          </span>
+        </MenuButton>
+
+        <MenuItems
+          anchor="bottom"
+          as="section"
+          className="flex w-[177px] flex-col justify-start gap-1 rounded-md bg-white p-2 text-xs font-light text-black"
+        >
           <Platforms
             onClick={(option) => {
               handleClick(option);
@@ -201,8 +205,8 @@ const PlatformsFilterDiv = () => {
             }}
             platform={options}
           />
-        </div>
-      )}
+        </MenuItems>
+      </Menu>
     </div>
   );
 };

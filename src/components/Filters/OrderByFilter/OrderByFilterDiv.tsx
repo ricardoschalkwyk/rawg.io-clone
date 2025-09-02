@@ -1,13 +1,13 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { useState } from "react";
-
-import Button from "../../Button";
-import OrderBy from "../OrderBy";
-import Api from "../../../api";
-import { GetResult } from "../../../types";
 import { useDispatch } from "react-redux";
+
+import Api from "../../../api";
 import { setGames } from "../../../store/games";
+import { GetResult } from "../../../types";
+import OrderBy from "../OrderBy";
 
 export interface OrderOption {
   id: number;
@@ -101,24 +101,24 @@ const OrderByFilterDiv = () => {
 
   return (
     <div className="relative">
-      <Button
-        onClick={() => {
-          setShowOrderBy(!showOrderBy);
-        }}
-        className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray lg:space-x-3"
-      >
-        <div className="flex items-center gap-5 font-light md:gap-3 2xl:text-lg">
-          <h1 className="shrink-0">Order by :</h1>
-          <span className="font-normal">{orderValue}</span>
-        </div>
+      <Menu>
+        <MenuButton className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray lg:space-x-3">
+          <div className="2xl:text-md flex items-center gap-5 font-light md:gap-3">
+            <h1 className="shrink-0">Order by :</h1>
 
-        <span className="text-brand-light-gray">
-          <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
-        </span>
-      </Button>
+            <span className="font-normal">{orderValue}</span>
+          </div>
 
-      {showOrderBy && (
-        <div className="absolute top-10 z-20 2xl:top-12">
+          <span className="text-brand-light-gray">
+            <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+          </span>
+        </MenuButton>
+
+        <MenuItems
+          anchor="bottom"
+          as="section"
+          className="flex w-[177px] flex-col justify-start gap-1 rounded-md bg-white p-2 text-xs font-light text-black"
+        >
           <OrderBy
             order={options}
             onClick={(option) => {
@@ -128,8 +128,8 @@ const OrderByFilterDiv = () => {
               setShowOrderBy(false);
             }}
           />
-        </div>
-      )}
+        </MenuItems>
+      </Menu>
     </div>
   );
 };
