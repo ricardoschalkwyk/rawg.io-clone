@@ -26,7 +26,7 @@ const Platforms = ({ platform, onClick }: PlatformProps) => {
   };
 
   return (
-    <div className="flex w-[150px] flex-col justify-start gap-1 rounded bg-white p-2 text-xs font-normal text-black">
+    <div className="flex w-[150px] flex-col justify-start gap-1 rounded-sm bg-white p-2 text-xs font-normal text-black">
       {activePlatform.map((option, index) => (
         <div
           key={option.id}

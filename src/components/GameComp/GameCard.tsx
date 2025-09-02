@@ -161,17 +161,17 @@ const GameCard = ({ game }: GameDefaults) => {
 
             {/* Owned status */}
             <div className="flex gap-1">
-              <Button className="flex items-center gap-1 rounded bg-brand-gray py-1 px-2 text-xs">
+              <Button className="flex items-center gap-1 rounded-sm bg-brand-gray py-1 px-2 text-xs">
                 <FontAwesomeIcon icon={faPlus} className="text-xs" />
                 {game?.added_by_status?.owned}
               </Button>
 
               {hover && (
                 <div className="flex gap-1">
-                  <Button className="flex items-center gap-1 rounded bg-brand-gray py-1 px-2 text-xs">
+                  <Button className="flex items-center gap-1 rounded-sm bg-brand-gray py-1 px-2 text-xs">
                     <FontAwesomeIcon icon={faGift} className="text-xs" />
                   </Button>
-                  <Button className="flex items-center gap-1 rounded bg-brand-gray py-1 px-2 text-xs">
+                  <Button className="flex items-center gap-1 rounded-sm bg-brand-gray py-1 px-2 text-xs">
                     <FontAwesomeIcon icon={faEllipsis} className="text-base" />
                   </Button>
                 </div>

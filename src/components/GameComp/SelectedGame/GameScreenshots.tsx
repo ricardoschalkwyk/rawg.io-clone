@@ -86,7 +86,7 @@ const GameScreenshots = ({ screenShots, game }: Props) => {
               </div>
             )}
 
-            <Button className="absolute bottom-0 right-0 m-3 flex items-center gap-2 rounded-sm bg-brand-dark bg-opacity-50 p-1 px-2 text-xs font-normal text-brand-white">
+            <Button className="absolute bottom-0 right-0 m-3 flex items-center gap-2 rounded-xs bg-brand-dark bg-opacity-50 p-1 px-2 text-xs font-normal text-brand-white">
               <FontAwesomeIcon
                 className="h-5 w-5 text-brand-white"
                 icon={faYoutube}
@@ -150,7 +150,7 @@ const GameScreenshots = ({ screenShots, game }: Props) => {
                 </div>
               </div>
               <div className="flex flex-col items-center">
-                <Button className="rounded-sm px-3 py-1 text-xs font-thin ring-1 ring-brand-light-gray">
+                <Button className="rounded-xs px-3 py-1 text-xs font-thin ring-1 ring-brand-light-gray">
                   <FontAwesomeIcon
                     className="h-2 w-2 text-brand-white"
                     icon={faPlus}

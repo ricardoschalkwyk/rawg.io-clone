@@ -74,7 +74,7 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
       {!hover && (
         <div className="absolute bottom-4 left-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-brand-white">
           <FontAwesomeIcon
-            className="relative -right-[1px] h-5 w-5 "
+            className="relative -right-px h-5 w-5 "
             icon={faPlay}
           />
         </div>

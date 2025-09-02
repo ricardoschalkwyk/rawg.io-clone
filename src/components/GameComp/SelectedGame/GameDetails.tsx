@@ -125,10 +125,10 @@ const GameDetails = ({ game }: Props) => {
       <div className="mt-10 flex flex-col 2xl:pr-80">
         {/* Colour blocks */}
         <div className="flex rounded-md">
-          <div className="w-full max-w-xs rounded-l-md bg-gradient-to-b from-rating-green-light to-rating-green-dark py-7 hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
-          <div className="w-full max-w-xs bg-gradient-to-b from-rating-blue-light to-rating-blue-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
-          <div className="w-full max-w-xs bg-gradient-to-b from-rating-orange-light to-rating-orange-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
-          <div className="w-full max-w-xs rounded-r-md bg-gradient-to-b from-rating-red-light to-rating-red-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
+          <div className="w-full max-w-xs rounded-l-md bg-linear-to-b from-rating-green-light to-rating-green-dark py-7 hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
+          <div className="w-full max-w-xs bg-linear-to-b from-rating-blue-light to-rating-blue-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
+          <div className="w-full max-w-xs bg-linear-to-b from-rating-orange-light to-rating-orange-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
+          <div className="w-full max-w-xs rounded-r-md bg-linear-to-b from-rating-red-light to-rating-red-dark hover:shadow-[1px_0px_9px_0px_rgb(300,300,300,300)]" />
         </div>
 
         {/* Click colour rating */}

@@ -55,7 +55,7 @@ const Navbar = () => {
             id="search"
             type="text"
             placeholder={`Search ${format} games`}
-            className="w-full appearance-none rounded-full bg-brand-gray px-10 py-1.5 text-sm font-light text-brand-light-gray outline-none transition duration-150 ease-in-out focus:bg-brand-white group-hover:bg-brand-white group-hover:text-brand-black lg:py-2 2xl:py-3 2xl:text-lg"
+            className="w-full appearance-none rounded-full bg-brand-gray px-10 py-1.5 text-sm font-light text-brand-light-gray outline-hidden transition duration-150 ease-in-out focus:bg-brand-white group-hover:bg-brand-white group-hover:text-brand-black lg:py-2 2xl:py-3 2xl:text-lg"
             value={userInput}
             onChange={(e) => {
               setUserInput(e);
@@ -65,11 +65,11 @@ const Navbar = () => {
 
         <div className="absolute right-20 hidden h-5 w-5 text-sm font-thin duration-1000 ease-in-out group-hover:hidden sm:block">
           <div className="flex items-center gap-2">
-            <div className="rounded-sm px-1 text-brand-light-gray ring-1 ring-brand-light-gray ">
+            <div className="rounded-xs px-1 text-brand-light-gray ring-1 ring-brand-light-gray ">
               <h6>alt</h6>
             </div>
             <span className="text-brand-light-gray">+</span>
-            <div className="rounded-sm px-1 text-brand-light-gray ring-1 ring-brand-light-gray">
+            <div className="rounded-xs px-1 text-brand-light-gray ring-1 ring-brand-light-gray">
               <h6>enter</h6>
             </div>
           </div>
