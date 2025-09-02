@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import DisplayPage from "./pages/DisplayPage";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   // {Basic functionality}
@@ -21,6 +22,7 @@ function App() {
         <Route path={"/"} element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/game/:id" element={<DisplayPage />} />
+          <Route path="/search/:title" element={<SearchResults />} />
         </Route>
       </Routes>
     </div>

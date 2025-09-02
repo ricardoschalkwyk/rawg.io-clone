@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNetworkWired } from "@fortawesome/free-solid-svg-icons";
 import { Bars3Icon } from "@heroicons/react/24/solid";
@@ -19,13 +19,11 @@ import FilterDiv from "../components/Filters/FilterDiv";
 const HomePage = () => {
   const { columns } = useSelector((state: RootState) => state.games);
 
-  const [params, setParams] = useSearchParams();
-
   const dispatch = useDispatch();
 
   const getGames = async () => {
     const { results, count } = await Api.get<GetResult>(
-      "/games?page=1&page_size=300"
+      "/games?page=1&page_size=40"
     );
 
     dispatch(setGames({ results, count }));
@@ -57,12 +55,12 @@ const HomePage = () => {
           </div>
           <div className="ml-4 flex gap-2">
             <Button
-              onClick={() => setParams({ page: "1" })}
-              className="bg-brand-dark py-3 px-4 hover:bg-brand-gray"
+              onClick={() => {}}
+              className="bg-brand-dark px-4 py-3 hover:bg-brand-gray"
             >
               <Bars3Icon className="h-4 w-4" />
             </Button>
-            <Button className="bg-brand-dark py-3 px-4 hover:bg-brand-gray">
+            <Button className="bg-brand-dark px-4 py-3 hover:bg-brand-gray">
               <FontAwesomeIcon icon={faNetworkWired} />
             </Button>
           </div>

@@ -1,14 +1,14 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   ChatBubbleOvalLeftIcon,
   PlusIcon,
   StopIcon,
 } from "@heroicons/react/24/solid";
 
-import Button from "../../Button";
-import { GameDetail } from "../../../types";
 import clsx from "clsx";
+import { GameDetail } from "../../../types";
+import Button from "../../Button";
 import NavLink from "../../NavLink";
 
 type Props = {

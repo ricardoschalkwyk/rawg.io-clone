@@ -12,14 +12,16 @@ import { RootState } from "../../store";
 
 import NavItems from "./NavItems";
 import Input from "../Input";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const count = useSelector((state: RootState) => state.games.count);
-  const format = new Intl.NumberFormat().format(count);
-  // This state is used for the selection of how many results the user wants
+
   const [userInput, setUserInput] = useState("");
 
-  const dispatch = useDispatch();
+  const format = new Intl.NumberFormat().format(count);
 
   return (
     <div className="mt-7 flex items-center justify-between">
@@ -42,12 +44,8 @@ const Navbar = () => {
 
             try {
               // Get input for the search
-              const { results, count } = await Api.get<GetResult>(
-                `/games?page=1&page_size=300&search=${userInput}`
-              );
 
-              dispatch(setGames({ results, count }));
-              console.log("🚀 ~ getGames ~ results", results);
+              navigate(`search/${userInput}`);
             } catch (error) {
               alert("Item not found");
             }

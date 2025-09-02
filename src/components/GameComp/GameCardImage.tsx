@@ -14,6 +14,7 @@ interface ImageDefaults {
 
 const GameCardImage = ({ hover, game }: ImageDefaults) => {
   const [trailer, setTrailer] = useState("");
+  const [hasRequested, setHasRequested] = useState(false);
 
   const getCropUrl = (url = "") => {
     const parts = url.split("/media/");
@@ -24,6 +25,10 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
   const getGameTrailer = async () => {
     try {
       const result = await Api.get<RootTrailer>(`/games/${game?.id}/movies`);
+      console.log(result);
+      if (result) {
+        setHasRequested(true);
+      }
 
       setTrailer(result.results[0].data["480"]);
       console.log("🚀 ~ getGames Trailer ~ results", result);
@@ -33,7 +38,7 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
   };
 
   useEffect(() => {
-    if (hover) {
+    if (hover && !trailer && !hasRequested) {
       getGameTrailer();
     }
   }, [hover]);

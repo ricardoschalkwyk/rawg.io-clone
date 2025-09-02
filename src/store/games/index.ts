@@ -53,6 +53,9 @@ export const gamesSlice = createSlice({
         };
       });
     },
+    setGamesNull: (state) => {
+      state.columns = initialState.columns;
+    },
     gameActive: (state) => {
       state.button = true;
     },
@@ -68,7 +71,13 @@ export const gamesSlice = createSlice({
   },
 });
 
-export const { gameActive, setGames, setGame, setGameNull, setScreenShots } =
-  gamesSlice.actions;
+export const {
+  gameActive,
+  setGames,
+  setGamesNull,
+  setGame,
+  setGameNull,
+  setScreenShots,
+} = gamesSlice.actions;
 
 export default gamesSlice.reducer;

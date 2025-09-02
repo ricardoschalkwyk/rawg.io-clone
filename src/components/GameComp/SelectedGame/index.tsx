@@ -9,7 +9,7 @@ import GameScreenshots from "./GameScreenshots";
 import GameDetails from "./GameDetails";
 
 import { GameDetail, Root, RootTrailer } from "../../../types";
-import { setGame, setScreenShots } from "../../../store/games";
+import { setGame, setGamesNull, setScreenShots } from "../../../store/games";
 import { RootState } from "../../../store";
 import NavLink from "../../NavLink";
 
@@ -51,6 +51,7 @@ const GameSelected = () => {
   useEffect(() => {
     handleData();
     handleScreenshots();
+    dispatch(setGamesNull());
   }, [id]);
 
   if (!game) {
