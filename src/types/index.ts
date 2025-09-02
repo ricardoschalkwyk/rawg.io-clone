@@ -71,6 +71,22 @@ export interface Game {
   short_screenshots: ShortScreenshot[];
 }
 
+export interface GameTrailer {
+  id: number;
+  name: string;
+  preview: string;
+  data: {
+    480: string;
+    max: string;
+  };
+}
+export interface RootTrailer {
+  count: number;
+  next: string;
+  previous: any;
+  results: GameTrailer[];
+}
+
 export interface GameDetail {
   id: number;
   slug: string;
