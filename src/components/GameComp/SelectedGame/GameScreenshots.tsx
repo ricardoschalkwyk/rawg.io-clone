@@ -3,10 +3,14 @@ import { faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Button from "../../Button";
-import { Results } from "../../../types";
+import { GameDetail, Results, RootTrailer } from "../../../types";
+import Api from "../../../api";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 type Props = {
   screenShots: Results[];
+  game?: GameDetail;
 };
 
 const contibutors = [
@@ -42,25 +46,55 @@ const contibutors = [
   },
 ];
 
-const GameScreenshots = ({ screenShots }: Props) => {
-  const firstImage = screenShots.filter((item, index) => index === 0);
+const GameScreenshots = ({ screenShots, game }: Props) => {
+  const { id } = useParams();
+
+  const [video, setVideo] = useState("");
+
+  const firstImage = screenShots.filter((_, index) => index === 0);
+
+  const getGameTrailer = async () => {
+    try {
+      const result = await Api.get<RootTrailer>(`/games/${id}/movies`);
+
+      setVideo(result.results[0].data["480"]);
+      console.log("🚀 ~ getGames Video ~ results", result);
+    } catch (error) {
+      console.log("Item not found");
+    }
+  };
+
+  useEffect(() => {
+    getGameTrailer();
+  }, [id]);
 
   return (
     <div className="mt-20 flex flex-col items-center justify-center">
       <div className="relative">
         {firstImage.map((item) => (
-          <div key={item.id} className="overflow-hidden rounded-md">
-            <img src={item.image} width={item.width} height={item.height} />
-          </div>
-        ))}
+          <>
+            {video ? (
+              <video
+                className="overflow-hidden rounded-md object-fill"
+                autoPlay
+                muted
+                src={video}
+              />
+            ) : (
+              <div key={item.id} className="overflow-hidden rounded-md">
+                <img src={item.image} width={item.width} height={item.height} />
+              </div>
+            )}
 
-        <Button className="absolute bottom-0 right-0 m-3 flex items-center gap-2 rounded-sm bg-brand-dark bg-opacity-50 p-1 px-2 text-xs font-normal text-brand-white">
-          <FontAwesomeIcon
-            className="h-5 w-5 text-brand-white"
-            icon={faYoutube}
-          />
-          Play full video
-        </Button>
+            <Button className="absolute bottom-0 right-0 m-3 flex items-center gap-2 rounded-sm bg-brand-dark bg-opacity-50 p-1 px-2 text-xs font-normal text-brand-white">
+              <FontAwesomeIcon
+                className="h-5 w-5 text-brand-white"
+                icon={faYoutube}
+              />
+              Play full video
+            </Button>
+          </>
+        ))}
       </div>
 
       {/* Preview Images */}

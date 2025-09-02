@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -8,9 +8,10 @@ import Api from "../../../api";
 import GameScreenshots from "./GameScreenshots";
 import GameDetails from "./GameDetails";
 
-import { GameDetail, Root } from "../../../types";
+import { GameDetail, Root, RootTrailer } from "../../../types";
 import { setGame, setScreenShots } from "../../../store/games";
 import { RootState } from "../../../store";
+import NavLink from "../../NavLink";
 
 const GameSelected = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const GameSelected = () => {
   useEffect(() => {
     handleData();
     handleScreenshots();
-  }, []);
+  }, [id]);
 
   if (!game) {
     return null;
@@ -64,7 +65,7 @@ const GameSelected = () => {
 
       {screenShots ? (
         <div className="w-full max-w-sm">
-          <GameScreenshots screenShots={screenShots} />
+          <GameScreenshots screenShots={screenShots} game={game} />
         </div>
       ) : null}
     </div>

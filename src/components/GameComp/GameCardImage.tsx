@@ -46,7 +46,7 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
           autoPlay
           muted
           src={trailer}
-        ></video>
+        />
       ) : (
         <div
           className="min-h-[150px] w-full rounded-t-xl bg-cover bg-center 2xl:min-h-[240px]"
