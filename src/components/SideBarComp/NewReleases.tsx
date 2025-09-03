@@ -11,15 +11,19 @@ import Icon from "../Icon";
 import { GetResult } from "../../types";
 import Api from "../../api";
 import { setGames } from "../../store/games";
+import { useNavigate } from "react-router-dom";
+import clsx from "clsx";
 
 type Props = {
   name: string;
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
   query: string;
+  url: string;
 };
 
-const NewReleases = () => {
+export default function NewReleases() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const currentYear = moment().year();
   const currentMonth = moment().month() + 1;
@@ -29,21 +33,25 @@ const NewReleases = () => {
       name: "Last 30 days",
       icon: StarIcon,
       query: "lists/recent-games-past?ordering=-added",
+      url: "/discover/last-30-days"
     },
     {
       name: "This week",
       icon: FireIcon,
       query: "lists/recent-games?ordering=-added",
+      url: "/discover/this-week"
     },
     {
       name: "Next week",
       icon: ForwardIcon,
       query: "lists/recent-games-future?ordering=-added",
+      url: "/discover/next-week"
     },
     {
       name: "Release calender",
       icon: CalendarIcon,
       query: `calendar/${currentYear}/${currentMonth}?ordering=released`,
+      url: "/video-game-releases"
     },
   ];
 
@@ -51,12 +59,13 @@ const NewReleases = () => {
     try {
       // Get input for the search
       const { results, count } = await Api.get<GetResult>(
-        `/games/${item.query}&page=1&page_size=300&`
+        `/games/${item.query}&page_size=40&page=1`
       );
 
       dispatch(setGames({ results, count }));
+      navigate(item.url, { state: { query: item.query } })
     } catch (error) {
-      alert("Item not found");
+      console.log("Item not found");
     }
   };
 
@@ -64,9 +73,11 @@ const NewReleases = () => {
     <div className="space-y-2">
       {Options.map((item, index) => (
         <NavLink
-          to={""}
+          to={item.url}
           key={index}
-          className="group flex w-full items-center gap-2 border-solid text-lg font-thin"
+          className={clsx("group flex w-full items-center gap-2 border-solid text-lg font-thin",
+            item.url === "/video-game-releases" && "pointer-events-none text-gray-500/30"
+          )}
           onClick={() => handleDates(item)}
         >
           <Icon
@@ -82,4 +93,4 @@ const NewReleases = () => {
 
 NewReleases.propTypes = {};
 
-export default NewReleases;
+

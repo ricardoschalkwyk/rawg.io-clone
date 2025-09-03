@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import DisplayPage from "./pages/DisplayPage";
 import SearchResults from "./pages/SearchResults";
+import DiscoverPage from "./pages/DiscoverPage";
 
 function App() {
   // {Basic functionality}
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/game/:id" element={<DisplayPage />} />
           <Route path="/search/:title" element={<SearchResults />} />
+          <Route path="/:discover/:url" element={<DiscoverPage />} />
         </Route>
       </Routes>
     </div>

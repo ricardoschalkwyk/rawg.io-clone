@@ -5,9 +5,9 @@ const Api = {
   get<T>(url: string): Promise<T> {
     const split = url.split("?");
 
-    const fetchUrl = `${BASE_URL}${split[0]}?key=${API_KEY}${
-      split[1] ? `&${split[1]}` : ""
-    }`;
+    const fetchUrl = `${BASE_URL}${split[0]}?${
+      split[1] ? `${split[1]}` : ""
+    }&key=${API_KEY}`;
 
     return new Promise((resolve, reject) => {
       fetch(fetchUrl).then((res) => {
