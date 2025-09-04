@@ -47,7 +47,7 @@ const GameDetails = ({ game }: Props) => {
       </div>
 
       <div className="mt-3">
-        <div className="text-3xl font-bold md:text-7xl">{game?.name}</div>
+        <div className="text-3xl font-bold md:text-6xl">{game?.name}</div>
       </div>
 
       {/* My Games / wishlist / collection */}
@@ -142,12 +142,12 @@ const GameDetails = ({ game }: Props) => {
                     item.title === "exceptional"
                       ? "text-green-400"
                       : item.title === "recommended"
-                      ? "text-blue-400"
-                      : item.title === "meh"
-                      ? "text-orange-400"
-                      : item.title === "skip"
-                      ? "text-red-400"
-                      : ""
+                        ? "text-blue-400"
+                        : item.title === "meh"
+                          ? "text-orange-400"
+                          : item.title === "skip"
+                            ? "text-red-400"
+                            : ""
                   )}
                 />
                 <span className="font-bold capitalize">{item.title}</span>

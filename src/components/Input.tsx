@@ -24,7 +24,7 @@ const Input = ({
       type={type}
       placeholder={placeholder}
       onChange={(event) => onChange(event.target.value)}
-      className={clsx("rounded-md active:no-underline", className)}
+      className={clsx("active:no-underline", className)}
     />
   );
 };

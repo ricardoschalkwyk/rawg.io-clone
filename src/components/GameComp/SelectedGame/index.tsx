@@ -10,6 +10,7 @@ import GameScreenshots from "./GameScreenshots";
 import { RootState } from "../../../store";
 import { setGame, setGamesNull, setScreenShots } from "../../../store/games";
 import { GameDetail, Root } from "../../../types";
+import { getCropUrl } from "../../../utils";
 
 const GameSelected = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ const GameSelected = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-12 xl:flex-row xl:items-start">
-      <div className="w-full">
+      <div>
         <GameDetails game={game} />
       </div>
 

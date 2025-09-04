@@ -1,18 +1,12 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import Api from "../../api";
-
-import { GetResult } from "../../types";
-
-import { setGames } from "../../store/games";
 import { RootState } from "../../store";
 
-import NavItems from "./NavItems";
 import Input from "../Input";
-import { useNavigate } from "react-router-dom";
+import NavItems from "./NavItems";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -34,7 +28,7 @@ const Navbar = () => {
       </div>
 
       {/* Search bar */}
-      <div className="group relative mx-6 flex w-56 items-center gap-2 md:w-full md:max-w-sm xl:max-w-2xl">
+      <div className="group relative mx-6 flex w-56 items-center gap-2 md:w-full md:max-w-sm xl:max-w-2xl 2xl:max-w-6xl">
         <MagnifyingGlassIcon className="absolute left-3 h-4 w-4 font-bold group-focus-within:text-brand-black group-hover:text-brand-black 2xl:h-6 2xl:w-6" />
         <form
           className="w-full"

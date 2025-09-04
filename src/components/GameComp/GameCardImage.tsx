@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Api from "../../api";
 import { Game, RootTrailer } from "../../types";
 import Button from "../Button";
+import { getCropUrl } from "../../utils";
 
 interface ImageDefaults {
   game?: Game;
@@ -16,17 +17,10 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
   const [trailer, setTrailer] = useState("");
   const [hasRequested, setHasRequested] = useState(false);
 
-  const getCropUrl = (url = "") => {
-    const parts = url.split("/media/");
-
-    return `${parts[0]}/media/crop/600/400/${parts[1]}`;
-  };
-
   const getGameTrailer = async () => {
     try {
       const result = await Api.get<RootTrailer>(`/games/${game?.id}/movies`);
-    
-      
+
       if (result) {
         setHasRequested(true);
       }
@@ -35,9 +29,8 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
         setTrailer(result.results[0].data["480"]);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  
   };
 
   useEffect(() => {
