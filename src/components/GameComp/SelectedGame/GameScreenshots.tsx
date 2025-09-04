@@ -1,12 +1,12 @@
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import Button from "../../Button";
-import { GameDetail, Results, RootTrailer } from "../../../types";
-import Api from "../../../api";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+import Api from "../../../api";
+import { GameDetail, Results, RootTrailer } from "../../../types";
+import Button from "../../Button";
 
 type Props = {
   screenShots: Results[];
@@ -58,7 +58,6 @@ const GameScreenshots = ({ screenShots, game }: Props) => {
       const result = await Api.get<RootTrailer>(`/games/${id}/movies`);
 
       setVideo(result.results[0].data["480"]);
-      console.log("🚀 ~ getGames Video ~ results", result);
     } catch (error) {
       console.log("Item not found");
     }
@@ -72,7 +71,7 @@ const GameScreenshots = ({ screenShots, game }: Props) => {
     <div className="mt-20 flex flex-col items-center justify-center">
       <div className="relative">
         {firstImage.map((item) => (
-          <>
+          <Fragment key={item.id}>
             {video ? (
               <video
                 className="overflow-hidden rounded-md object-fill"
@@ -81,7 +80,7 @@ const GameScreenshots = ({ screenShots, game }: Props) => {
                 src={video}
               />
             ) : (
-              <div key={item.id} className="overflow-hidden rounded-md">
+              <div  className="overflow-hidden rounded-md">
                 <img src={item.image} width={item.width} height={item.height} />
               </div>
             )}
@@ -93,7 +92,7 @@ const GameScreenshots = ({ screenShots, game }: Props) => {
               />
               Play full video
             </Button>
-          </>
+          </Fragment>
         ))}
       </div>
 

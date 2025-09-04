@@ -1,11 +1,11 @@
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import clsx from "clsx";
-import { Game, GameTrailer, RootTrailer } from "../../types";
-import Button from "../Button";
-import Api from "../../api";
 import { useEffect, useState } from "react";
+
+import Api from "../../api";
+import { Game, RootTrailer } from "../../types";
+import Button from "../Button";
 
 interface ImageDefaults {
   game?: Game;
@@ -25,16 +25,19 @@ const GameCardImage = ({ hover, game }: ImageDefaults) => {
   const getGameTrailer = async () => {
     try {
       const result = await Api.get<RootTrailer>(`/games/${game?.id}/movies`);
-      console.log(result);
+    
+      
       if (result) {
         setHasRequested(true);
       }
 
-      setTrailer(result.results[0].data["480"]);
-      console.log("🚀 ~ getGames Trailer ~ results", result);
+      if (result.results.length) {
+        setTrailer(result.results[0].data["480"]);
+      }
     } catch (error) {
-      console.log("Item not found");
+      console.log(error)
     }
+  
   };
 
   useEffect(() => {

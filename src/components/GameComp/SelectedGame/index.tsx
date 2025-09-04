@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 
 import Api from "../../../api";
 
-import GameScreenshots from "./GameScreenshots";
 import GameDetails from "./GameDetails";
+import GameScreenshots from "./GameScreenshots";
 
-import { GameDetail, Root, RootTrailer } from "../../../types";
-import { setGame, setGamesNull, setScreenShots } from "../../../store/games";
 import { RootState } from "../../../store";
-import NavLink from "../../NavLink";
+import { setGame, setGamesNull, setScreenShots } from "../../../store/games";
+import { GameDetail, Root } from "../../../types";
 
 const GameSelected = () => {
   const dispatch = useDispatch();
@@ -27,7 +25,6 @@ const GameSelected = () => {
       const results = await Api.get<GameDetail>(`/games/${id}`);
 
       dispatch(setGame(results));
-      console.log("🚀 ~ getGames ~ results", results);
     } catch (error) {
       alert("Item not found");
     }
@@ -39,10 +36,7 @@ const GameSelected = () => {
         `/games/${id}/screenshots?page_size=5`
       );
 
-      console.log(images.results);
-
       dispatch(setScreenShots(images.results));
-      console.log("🚀 ~ getGames ~ images", images);
     } catch (error) {
       alert("Item not found");
     }
