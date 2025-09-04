@@ -147,8 +147,7 @@ const PlatformsFilterDiv = () => {
   const [showPlatforms, setShowPlatforms] = useState(false);
   const [platformsValue, setPlatformsValue] = useState("Platforms");
   const [options, setOptions] = useState(platformsOptions);
-  const { params } = useParams();
-  console.log(params);
+
 
   const dispatch = useDispatch();
 
