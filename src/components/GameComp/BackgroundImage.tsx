@@ -16,7 +16,7 @@ export default function BackgroundImage() {
         src={getCropUrl(game?.background_image)}
         className="object-cover relative z-0 w-full opacity-35"
       />
-      <div className="absolute inset-0 z-0 from-40% bg-linear-to-t from-black via-black to-transparent"></div>
+      <div className="absolute inset-0 z-0 from-40% bg-linear-to-t from-brand-black via-brand-black to-transparent"></div>
     </div>
   );
 }
