@@ -68,7 +68,7 @@ const SearchResults = () => {
       </div>
 
       {/* GameCards */}
-      <div className="mt-8 grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-8 grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {columns.map((column, index) => (
           <div key={index} className="flex flex-col gap-6">
             {column.results.map((game, gIndex) => (

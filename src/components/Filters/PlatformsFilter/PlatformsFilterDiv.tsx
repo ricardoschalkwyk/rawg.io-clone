@@ -148,7 +148,6 @@ const PlatformsFilterDiv = () => {
   const [platformsValue, setPlatformsValue] = useState("Platforms");
   const [options, setOptions] = useState(platformsOptions);
 
-
   const dispatch = useDispatch();
 
   const handleClick = (option: PlatformOption) => {
@@ -180,8 +179,6 @@ const PlatformsFilterDiv = () => {
       <Menu>
         <MenuButton className="flex items-center space-x-8 rounded-md bg-brand-dark py-2 px-3 text-sm font-light duration-500 ease-in-out hover:text-brand-light-gray lg:space-x-3">
           <div className="2xl:text-md flex items-center gap-5 font-light md:gap-3">
-            <h1 className="shrink-0">Order by :</h1>
-
             <span className="font-normal">{platformsValue}</span>
           </div>
 

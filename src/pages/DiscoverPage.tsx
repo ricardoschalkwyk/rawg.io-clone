@@ -17,14 +17,9 @@ import GameCard from "../components/GameComp/GameCard";
 import FilterDiv from "../components/Filters/FilterDiv";
 
 export default function DiscoverPage() {
-  const dispatch = useDispatch(); 
-  const location = useLocation()
-  const { url } = useParams()
-
-  console.log(url)
-
-  console.log(location)
-
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const { url } = useParams();
 
   const { columns } = useSelector((state: RootState) => state.games);
 
@@ -36,7 +31,7 @@ export default function DiscoverPage() {
 
       dispatch(setGames({ results, count }));
     } catch (error) {
-      console.log("Item not found")
+      console.log("Item not found");
     }
   };
 
@@ -80,7 +75,7 @@ export default function DiscoverPage() {
       </div>
 
       {/* GameCards */}
-      <div className="mt-8 grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-8 grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {columns.map((column, index) => (
           <div key={index} className="flex flex-col gap-6">
             {column.results.map((game, gIndex) => (
@@ -91,4 +86,4 @@ export default function DiscoverPage() {
       </div>
     </div>
   );
-};
+}

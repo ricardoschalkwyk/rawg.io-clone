@@ -3,13 +3,11 @@ import PlatformsFilterDiv from "./PlatformsFilter/PlatformsFilterDiv";
 
 const FilterDiv = () => {
   return (
-    <>
-      {/* Order */}
+    <div className="overflow-x-auto w-full max-w-10/12 flex">
       <OrderByFilterDiv />
 
-      {/* Platforms */}
       <PlatformsFilterDiv />
-    </>
+    </div>
   );
 };
 

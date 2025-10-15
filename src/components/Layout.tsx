@@ -5,11 +5,11 @@ import SideBar from "./SideBarComp/SideBar";
 
 function Layout() {
   return (
-    <div className="mb-20 max-w-3/4 mx-auto sm:px-10">
+    <div className="mb-20 mx-auto px-5 md:px-10">
       <Navbar />
 
       <div className="flex gap-12">
-        <div className="hidden xl:block">
+        <div className="hidden lg:block">
           <SideBar />
         </div>
 

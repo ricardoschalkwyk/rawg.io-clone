@@ -28,6 +28,9 @@ const initialState: GameState = {
     {
       results: [],
     },
+    {
+      results: [],
+    },
   ],
   count: 0,
   data: [],
@@ -44,7 +47,7 @@ export const gamesSlice = createSlice({
       state.data = action.payload.results;
       state.count = action.payload.count;
       state.columns = state.columns.map((column, index) => {
-        const numberThing = Math.ceil(state.data.length / 4);
+        const numberThing = Math.ceil(state.data.length / 5);
         return {
           results: state.data.slice(
             index * numberThing,
